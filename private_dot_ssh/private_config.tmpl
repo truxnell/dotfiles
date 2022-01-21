@@ -1,0 +1,22 @@
+Host *
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_ed25519
+
+Host 192.168.*
+  UserKnownHostsFile=/dev/null
+  StrictHostKeyChecking no
+
+host prusa
+ hostname octopi.lan
+ port 22
+ user pi
+
+host hyperion
+ hostname hyperion.lab
+ port 33322
+ user durandal
+
+host unifi
+ hostname unifi
+ port 22
+ user root
