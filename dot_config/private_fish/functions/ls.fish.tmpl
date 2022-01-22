@@ -1,0 +1,46 @@
+# Wrapper for lsd
+function ls --wraps=lsd --description 'lsd shorthand'
+    if type -q lsd
+        lsd $argv
+    else
+{{- if (eq .chezmoi.os "linux") }}
+        /usr/bin/ls $argv
+{{- else if (eq .chezmoi.os "darwin") }}
+        /usr/local/bin/ls $argv
+{{- end }}
+    end
+end
+
+
+# ls, the common ones I use a lot shortened for rapid fire usage
+function l --description 'list size, show type, human readable'
+    ls -l
+end
+
+function la --description 'list long, show all, type, human readable'
+    ls -lA
+end
+
+function lr --description 'list sort by date, recursive, type, human readable'
+    ls -tR
+end
+
+function lt --description 'list long, sort date, show type, human readable'
+    ls -lt
+end
+
+function ll --description 'list long'
+    ls -l
+end
+
+function ldot --description 'list dot directories'
+    ls -ld .*
+end
+
+function lsr --description 'recursive list of files and directories'
+    ls -lAR #Recursive list of files and directories
+end
+
+function lsn --description 'list single column of directories'
+    ls -1     #A column contains name of files and directories
+end
