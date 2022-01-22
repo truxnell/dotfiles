@@ -5,6 +5,7 @@ set -g fish_greeting
 set -gx KUBE_EDITOR nano
 set -gx VISUAL nano
 set -gx EDITOR nano
+set -gx AUR_HELPER paru
 
 # Set SOPS age
 set -gx SOPS_AGE_KEY_FILE {{ .chezmoi.homeDir }}/.config/sops/age/keys.txt
