@@ -10,7 +10,7 @@ configs:
   # Default: values listed below.
   include:
     - ./kubeconfig
-    - ~/.kube/kubeconfig
+    - ~/.kube/config
   # Exclude these globs.
   # Default: values listed below.
   # Note: kubie's own config file is always excluded.
