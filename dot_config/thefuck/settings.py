@@ -9,7 +9,7 @@
 #
 
 # rules = [<const: All rules enabled>]
-# exclude_rules = []
+exclude_rules = [fix_file]
 # wait_command = 3
 # require_confirmation = True
 # no_colors = False
