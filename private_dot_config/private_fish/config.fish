@@ -19,6 +19,11 @@ if type -q thefuck
     thefuck --alias | source
 end
 
+# Enable chezmoi
+if type -q chezmoi
+    chezmoi completion fish | source
+end
+
 ## Source custom configs
 for file in $__fish_config_dir/custom.d/*.fish
     source $file
