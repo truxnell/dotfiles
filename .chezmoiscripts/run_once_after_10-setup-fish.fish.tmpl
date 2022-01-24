@@ -1,7 +1,8 @@
 #!/usr/bin/fish
 
 echo -e "\033[0;32m>>>>> Begin Setting Up Fish shell <<<<<\033[0m"
-  
+
+
 ## Install fisher
 if not type -q fisher
   echo "installing fisher"
@@ -19,7 +20,7 @@ function install_fisher_plugin
 end
 
 ## Install fish plugins
-install_fisher_plugin patrickF1/fzf.fish
+install_fisher_plugin PatrickF1/fzf.fish
 install_fisher_plugin nickeb96/puffer-fish
 install_fisher_plugin jorgebucaran/autopair.fish
 install_fisher_plugin gazorby/fish-abbreviation-tips
@@ -27,8 +28,13 @@ install_fisher_plugin IlanCosman/tide@v5
 install_fisher_plugin jethrokuan/z
 install_fisher_plugin decors/fish-colored-man
 
+echo "Install fzf key bindings"
+# Install fzf bindings
+fzf_configure_bindings
 
 ## Setup completions
+echo -e "\033[0;32m>>>>> Setting up Fish completions <<<<<\033[0m"
+
 if not test -d $__fish_config_dir/completions
   mkdir -p $__fish_config_dir/completions
 end
@@ -52,5 +58,16 @@ if type -q kubectl
   echo "setting up kubectl completion"
   kubectl completion fish > $__fish_config_dir/completions/kubectl.fish
 end
+
+if type -q helm
+    echo "setting up helm completion"
+    helm completion fish > ~/.config/fish/completions/helm.fish
+end
+
+if type -q velero
+    echo "setting up velero completion"
+    velero completion fish > ~/.config/fish/completions/velero.fish
+end
+
 
 echo -e "\033[0;32m>>>>> Finish Setting Up Fish shell <<<<<\033[0m"
