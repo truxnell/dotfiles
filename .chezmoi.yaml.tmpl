@@ -44,7 +44,7 @@ data:
 
   name: "Nat Allan"
   email: "nat@natallan.com"
-  sync_dir: "{{ .chezmoi.homeDir }}/dotfiles_sync/"
+  sync_dir: "{{ .chezmoi.sourceDir }}/private_dot_synctarget"
 
   maildir: {{ joinPath .chezmoi.homeDir $maildir }}
   {{- if not $minimal }}
