@@ -1,0 +1,5 @@
+[Unit]
+Description=Syncthing
+
+[Service]
+ExecStart=/usr/bin/syncthing --no-browser

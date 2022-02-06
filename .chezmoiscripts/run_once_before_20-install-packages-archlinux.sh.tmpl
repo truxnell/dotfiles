@@ -1,5 +1,5 @@
 {{ if (or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.idLike "arch") ) -}}
-#!/bin/bash
+#!{{ lookPath "bash" }}
 
 set -eufo pipefail
 
