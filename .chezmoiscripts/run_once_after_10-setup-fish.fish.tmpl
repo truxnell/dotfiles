@@ -69,6 +69,10 @@ if type -q velero
     velero completion fish > ~/.config/fish/completions/velero.fish
 end
 
+if type -q talosctl
+    echo "setting up talosctl completion"
+    talosctl completion fish > ~/.config/fish/completions/talosctl.fish
+end
   
 
 echo -e "\033[0;32m>>>>> Finish Setting Up Fish shell <<<<<\033[0m"
