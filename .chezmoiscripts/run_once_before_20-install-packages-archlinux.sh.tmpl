@@ -40,6 +40,8 @@ packages=(
   tree
   ack
   postgresql
+  docker
+  python-pip
 )
 
 # AUR Cli apps
@@ -50,6 +52,8 @@ aur_packages=(
   talosctl
   velero-bin
   rpi-imager-bin
+  go-task-bin
+  mqtt-explorer
 )
 
 # Desktop utils
@@ -96,4 +100,7 @@ for aur_package in ${aur_packages[@]}; do
 done
 
 echo -e "\033[0;32m>>>>> Finish Setting Up Arch Linux Packages <<<<<\033[0m"
+echo -e "\033[0;32m>>>>> Add user to docker group (Req. sudo) <<<<<\033[0m"
+sudo usermod -aG docker $USER
+echo -e "\033[0;32m>>>>> Logout/Login required to catch new user permissions  <<<<<\033[0m"
 {{ end -}}
