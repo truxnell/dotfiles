@@ -2,15 +2,24 @@
 [user]
   name = {{ .name }}
   email = {{ .email }}
+  signingKey = C81131CB48660017162D86E40C8DAF7A05CFA5FD
+[gpg]
+  program = gpg
 [format]
   signOff = true
 [core]
   editor = nano
   excludesfile = {{ .chezmoi.homeDir }}/.gitignore_global
+[commit]
+  gpgsign = true
 [merge]
   ff = only
 [pull]
   rebase = true
+[status]
+  submoduleSummary = false
+[tag]
+  forceSignAnnotated = true
 [init]
   defaultBranch = main
 [url "ssh://git@github.com/"]
