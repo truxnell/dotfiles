@@ -23,6 +23,7 @@
 
 {{- $name := "Nat Allan" -}}
 {{- $email := "19149206+Truxnell@users.noreply.github.com" -}}
+{{- $bw_email := promptString "BitWarden Email? " -}}
 {{- $github_user := "truxnell" -}}
 {{- $maildir := "mail" -}}
 
@@ -42,8 +43,10 @@ data:
   headless: {{ $headless }}
   minimal: {{ $minimal }}
 
+
   name: "Nat Allan"
   email: "nat@natallan.com"
+  bw_email: "{{ $bw_email }}"
   sync_dir: "{{ .chezmoi.sourceDir }}/private_dot_synctarget"
 
   maildir: {{ joinPath .chezmoi.homeDir $maildir }}
@@ -57,7 +60,7 @@ data:
 {{- if $secrets }}
   bitwarden:
     spotify:
-    spotify_api: 
+    spotify_api:
     personal_mail:
     ssh_pub:
     ssh_priv:
