@@ -7,7 +7,7 @@ sudo pacman -S jq git wget gnupg gnupg2 bitwarden-cli -y
 
 printf 'Checking if logged into Bitwarden...\n'
 
-bw config server https://vault.trux.dev
+bw config server https://vault.{{ .external_domain }}
 bw login --check > /dev/null 2>&1
 logged_in=$?
 

@@ -1,30 +1,9 @@
-{{- $minimal := false -}}
-{{- $headless := false -}}
-{{- $secrets := true -}}
-{{- $workconf := false -}}
-
-{{- if (env "CI") -}}
-{{- $headless = true -}}
-{{- $secrets = false -}}
-{{- end -}}
-
-{{- if (env "SECRETS_OFF") -}}
-{{- $secrets = false -}}
-{{- end -}}
-
-{{- if (env "DOTFILES_MINIMAL") -}}
-{{- $minimal = true -}}
-{{- $secrets = false -}}
-{{- end }}
-
-{{- if (env "WORKCONF") -}}
-{{- $workconf = true -}}
-{{- end -}}
-
 {{- $name := "Nat Allan" -}}
 {{- $email := "19149206+Truxnell@users.noreply.github.com" -}}
 {{- $bw_email := promptString "BitWarden Email? " -}}
-{{- $github_user := "truxnell" -}}
+{{- $external_domain := promptString "External domain? " -}}
+{{- $internal_domain := promptString "Internal domain? " -}}
+{{- $github_user := "Truxnell" -}}
 {{- $maildir := "mail" -}}
 
 
@@ -33,39 +12,27 @@
 {{- $personal_imap_host := "mail.runbox.com" -}}
 {{- $personal_imap_port := 443 -}}
 
-{{- if (env "ASK") }}
-{{- $minimal = promptBool "minimal" -}}
-{{- end }}
 sourceDir: {{ .chezmoi.sourceDir }}
 
 data:
-  secrets: {{ $secrets }}
-  headless: {{ $headless }}
-  minimal: {{ $minimal }}
-
-
   name: "Nat Allan"
   email: "nat@natallan.com"
   bw_email: "{{ $bw_email }}"
   sync_dir: "{{ .chezmoi.sourceDir }}/private_dot_synctarget"
 
-  maildir: {{ joinPath .chezmoi.homeDir $maildir }}
-  {{- if not $minimal }}
-  smtp_host: {{ $personal_smtp_host }}
-  smtp_port: {{ $personal_smtp_port }}
-  imap_host: {{ $personal_imap_host }}
-  imap_port: {{ $personal_imap_port }}
-  {{- end }}
+  external_domain: "{{ $external_domain }}"
+  internal_domain: "{{ $internal_domain }}"
 
-{{- if $secrets }}
   bitwarden:
+    chezmoi_folder: "d7d1e55-18d0-4010-84d6-ce3f7c2be179"
     spotify:
     spotify_api:
     personal_mail:
-    ssh_pub:
-    ssh_priv:
-    ssh:
-    pgp_priv:
+    id_rsa: "3043cce5-e0da-4e38-8f12-b215272150e2"
+    id_rsa_pub: "0a96d136-16b3-4504-9980-245cefb40817"
+    id_ed25519: "2220444b-9b95-407f-8f10-21c86ab2d449"
+    id_ed25519_pub: "28e10bb3-fc19-455e-b1f4-fcf374d702a5"
+    kubeconfig: "2b8dcf87-460e-435a-b935-ca13b2c61fe4"
+    talosconfig: "8af7d7ba-075a-4966-9839-b9dd60f90d89"
     lastfm:
     github_repo_token:
-{{- end -}}
