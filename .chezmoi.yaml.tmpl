@@ -16,7 +16,7 @@ sourceDir: {{ .chezmoi.sourceDir }}
 
 data:
   name: "Nat Allan"
-  email: "nat@natallan.com"
+  email: "{{ $email }}"
   bw_email: "{{ $bw_email }}"
   sync_dir: "{{ .chezmoi.sourceDir }}/private_dot_synctarget"
 
