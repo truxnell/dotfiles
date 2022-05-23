@@ -4,6 +4,9 @@
 set -gx fzf_preview_file_cmd cat
 set -gx fzf_preview_dir_cmd lsd --all --color=always
 
+# Eval brew
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
 # Set SOPS age
 set -gx SOPS_AGE_KEY_FILE {{ .chezmoi.homeDir }}/.config/sops/age/keys.txt
 

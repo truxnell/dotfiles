@@ -1,8 +1,8 @@
 # Don't ask for confirmations
-#assume_yes = true
+assume_yes = true
 
 # Disable specific steps - same options as the command line flag
-#disable = ["system", "emacs"]
+disable = ["system"]
 
 # Ignore failures for these steps
 #ignore_failures = ["powershell"]
@@ -11,7 +11,7 @@
 #only = ["system", "emacs"]
 
 # Do not ask to retry failed steps (default: false)
-#no_retry = true
+no_retry = true
 
 # Run inside tmux
 #run_in_tmux = true
@@ -38,7 +38,7 @@ cleanup = false
 max_concurrency = 5
 # Additional git repositories to pull
 repos = [
-    "~/git/*/*/*"
+    "~/git/Truxnell/*/*"
 ]
 
 # Don't pull the predefined git repos
@@ -57,6 +57,8 @@ arguments = "--rebase --autostash"
 # Custom commands
 [commands]
 #"Python Environment" = "~/dev/.env/bin/pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager jupyter"
+"Helm Repos" = "helm repo update"
+"k@h Repos" = "~/git/k8s-gitops-repos/update-git.sh"
 
 [brew]
 #greedy_cask = true
@@ -90,7 +92,7 @@ show_arch_news = true
 
 [firmware]
 # Offer to update firmware; if false just check for and display available updates
-#upgrade = true
+upgrade = true
 
 [flatpak]
 # Use sudo for updating the system-wide installation

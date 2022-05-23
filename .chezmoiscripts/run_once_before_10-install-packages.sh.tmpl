@@ -1,0 +1,126 @@
+{{- if (eq .chezmoi.osRelease.id "fedora") -}}
+#!{{ lookPath "bash" }}
+
+set -eufo pipefail
+
+# Install repos
+sudo -E dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+sudo -E dnf install dnf-utils -y
+
+# Install vivaldi repo
+sudo dnf config-manager --add-repo https://repo.vivaldi.com/archive/vivaldi-fedora.repo
+
+# Install vscode repo
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+
+
+
+echo "updating packages"
+{{   if ne .chezmoi.username "root" -}}
+sudo -E dnf update
+sudo -E dnf upgrade -y
+sudo -E dnf group update core -y
+{{   else -}}
+dnf update
+dnf upgrade -y
+dnf group update core -y
+{{   end -}}
+
+sudo -E dnf install -y \
+  ack \
+  age \
+  ansible \
+  bat \
+  code \
+  curl \
+  curl \
+  discord \
+  docker \
+  duf \
+  fish \
+  fish \
+  fzf \
+  gimp \
+  git \
+  gh \
+  htop \
+  htop \
+  lsd \
+  neovim \
+  rpmfusion-nonfree-release-tainted \
+  dnf-plugins-core \
+  nfs-utils \
+  gnome-tweaks \
+  gnome-extensions-app \
+  nmap \
+  python-pip \
+  ripgrep \
+  starship \
+  syncthing \
+  thefuck \
+  tree \
+  unzip \
+  util-linux-user \
+  vivaldi-stable \
+  wget \
+  snapd \
+  dnf-plugin-snapper \
+  'google-roboto*' \
+  zoxide
+
+aur_packages=(
+  topgrade
+  flux-bin
+  talosctl
+  velero-bin
+  rpi-imager-bin
+  go-task-bin
+  mqtt-explorer-appimage
+)
+
+# Desktop utils
+packages+=(
+  # dbeaver
+)
+
+
+# install vscode
+
+# flatpack installs
+sudo -E flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+flatpak install -y flathub com.spotify.Client
+flatpak install -y net.cozic.joplin_desktop
+flatpak install -y flathub com.valvesoftware.Steam
+flatpak install -y com.prusa3d.PrusaSlicer
+flatpak install -y com.github.PintaProject.Pinta
+flatpak install -y org.raspberrypi.rpi-imager
+
+#snap installs
+sudo snap install auto-cpufreq
+#sudo auto-cpufreq --install
+
+echo -e "\033[0;32m>>>>> Finish Setting Up Arch Linux Packages <<<<<\033[0m"
+echo -e "\033[0;32m>>>>> Add user to docker group (Req. sudo) <<<<<\033[0m"
+sudo usermod -aG docker $USER
+echo -e "\033[0;32m>>>>> Logout/Login required to catch new user permissions  <<<<<\033[0m"
+
+
+# fonts
+mkdir -p .local/share/fonts
+
+curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip -o FiraCode.zip
+unzip FiraCode.zip -d .local/share/fonts/FiraCode
+
+curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip -o Meslo.zip
+unzip Meslo.zip -d .local/share/fonts/Meslo
+
+fc-cache -vf
+
+# Install automatic updates
+sudo -E dnf install dnf-automatic
+sudo -E systemctl enable --now dnf-automatic.timer
+
+{{ end -}}
