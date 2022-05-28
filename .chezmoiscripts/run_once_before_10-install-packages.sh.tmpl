@@ -4,9 +4,9 @@
 set -eufo pipefail
 
 # Install repos
-sudo -E dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo -E dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-sudo -E dnf install dnf-utils -y
+sudo -E dnf install -y dnf-utils
 
 # Install vivaldi repo
 sudo dnf config-manager --add-repo https://repo.vivaldi.com/archive/vivaldi-fedora.repo
@@ -21,11 +21,9 @@ echo "updating packages"
 {{   if ne .chezmoi.username "root" -}}
 sudo -E dnf update
 sudo -E dnf upgrade -y
-sudo -E dnf group update core -y
 {{   else -}}
 dnf update
 dnf upgrade -y
-dnf group update core -y
 {{   end -}}
 
 echo "Installing global linux apps (native + WSL)"
