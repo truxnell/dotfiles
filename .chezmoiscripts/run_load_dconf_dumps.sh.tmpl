@@ -1,6 +1,6 @@
-{{- if or (eq .chezmoi.os "linux") -}}
+{{- if and (eq .chezmoi.os "linux") (not (.chezmoi.kernel.osrelease | lower | contains "microsoft")) -}}
 
-#!/bin/sh
+#!{{ lookPath "bash" }}
 
 # dconf load /org/gnome/desktop/wm/keybindings/ < {{ .chezmoi.sourceDir }}/private_dot_config/private_dconf/keybindings
 dconf load /org/gnome/desktop/interface/ < {{ .chezmoi.sourceDir }}/private_dot_config/private_dconf/interface

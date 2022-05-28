@@ -1,5 +1,5 @@
-{{- if or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin") -}}
-#! /usr/bin/env bash
+{{- if eq .chezmoi.os "linux") -}}
+#!{{ lookPath "bash" }}
 
 echo "-----"
 echo "Manual installs for now"

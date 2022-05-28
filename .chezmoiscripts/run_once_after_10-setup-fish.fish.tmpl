@@ -1,4 +1,5 @@
-#!/usr/bin/fish
+{{- if eq .chezmoi.os "linux" -}}
+#!{{ lookPath "fish" }}
 
 echo -e "\033[0;32m>>>>> Begin Setting Up Fish shell <<<<<\033[0m"
 
@@ -73,6 +74,7 @@ if type -q talosctl
     echo "setting up talosctl completion"
     talosctl completion fish > ~/.config/fish/completions/talosctl.fish
 end
-  
+
 
 echo -e "\033[0;32m>>>>> Finish Setting Up Fish shell <<<<<\033[0m"
+{{- end --}}

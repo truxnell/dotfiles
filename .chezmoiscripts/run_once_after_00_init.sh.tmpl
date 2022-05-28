@@ -1,4 +1,6 @@
+{{- if eq .chezmoi.os "linux" -}}
 #!{{ lookPath "bash" }}
+
 
 echo -e "\033[0;32m>>>>> Installing nano syntax highlight <<<<<\033[0m"
 
@@ -11,3 +13,4 @@ echo -e "\033[0;32m>>>>> Start syncthing service <<<<<\033[0m"
 
 # Enable syncthing
 systemctl enable --user syncthing.service --now
+{{- end -}}

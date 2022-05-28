@@ -28,47 +28,41 @@ dnf upgrade -y
 dnf group update core -y
 {{   end -}}
 
+echo "Installing global linux apps (native + WSL)"
 sudo -E dnf install -y \
   ack \
   age \
   ansible \
   bat \
-  code \
   curl \
   curl \
-  discord \
   docker \
   duf \
   fish \
   fish \
   fzf \
-  gimp \
   git \
   gh \
-  htop \
   htop \
   lsd \
   neovim \
   rpmfusion-nonfree-release-tainted \
   dnf-plugins-core \
   nfs-utils \
-  gnome-tweaks \
-  gnome-extensions-app \
   nmap \
   python-pip \
   ripgrep \
   starship \
   syncthing \
-  thefuck \
   tree \
   unzip \
   util-linux-user \
-  vivaldi-stable \
   wget \
   snapd \
   dnf-plugin-snapper \
   'google-roboto*' \
   zoxide
+
 
 aur_packages=(
   topgrade
@@ -86,7 +80,16 @@ packages+=(
 )
 
 
-# install vscode
+echo "Installing apps for native linux only (GUI apps etc)"
+{{- if and (eq .chezmoi.os "linux") (not (.chezmoi.kernel.osrelease | lower | contains "microsoft")) -}}
+sudo -E dnf install -y \
+  code \
+  discord \
+  gimp \
+  gnome-extensions-app \
+  gnome-tweaks \
+  vivaldi-stable \
+
 
 # flatpack installs
 sudo -E flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -101,6 +104,7 @@ flatpak install -y org.raspberrypi.rpi-imager
 #snap installs
 sudo snap install auto-cpufreq
 #sudo auto-cpufreq --install
+{{- end -}}
 
 echo -e "\033[0;32m>>>>> Finish Setting Up Arch Linux Packages <<<<<\033[0m"
 echo -e "\033[0;32m>>>>> Add user to docker group (Req. sudo) <<<<<\033[0m"
@@ -121,6 +125,16 @@ fc-cache -vf
 
 # Install automatic updates
 sudo -E dnf install dnf-automatic
+
+{{- if eq .chezmoi.os "linux" -}}
+{{    if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}}
+
+sudo -E systemctl enable --now dnf-automatic-install.timer
+
+{{- else -}}
+
 sudo -E systemctl enable --now dnf-automatic.timer
 
+{{  end -}}
 {{ end -}}
+{{  end -}}
