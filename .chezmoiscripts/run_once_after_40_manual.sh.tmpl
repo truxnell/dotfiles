@@ -18,5 +18,7 @@ echo "and check for automatic update settings"
 # wifi.powersave=2
 # EOF
 # sudo systemctl restart NetworkManager.service
-
+# add sleep for e14
+# edit crontab -e
+# @reboot sudo rtcwake -m mem -s 2
 {{ end -}}
