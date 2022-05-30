@@ -75,6 +75,10 @@ if type -q talosctl
     talosctl completion fish > ~/.config/fish/completions/talosctl.fish
 end
 
+if type -q k9s
+  echo "setting up k9s completion"
+  k9s completion fish > $__fish_config_dir/completions/k9s.fish
+end
 
 echo -e "\033[0;32m>>>>> Finish Setting Up Fish shell <<<<<\033[0m"
 {{- end -}}
