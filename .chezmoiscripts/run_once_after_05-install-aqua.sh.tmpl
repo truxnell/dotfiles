@@ -13,7 +13,7 @@ if [ ! $(command -v aqua) ] || [ $(aqua -v | head -n1 | cut -d" " -f3 | sed "s/^
 fi
 
 # This script will run whenever I added something to .config/aqua.yaml
-# .config/aqua.yaml hash: {{ include "private_dot_config/aqua.yaml.tmpl" | sha256sum }}
+# .config/aqua.yaml hash: {{ include "private_dot_config/aqua.yaml" | sha256sum }}
 echo "upgrading aqua"
 aqua install -a
 

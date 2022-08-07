@@ -10,7 +10,7 @@ k9s:
   logger:
     tail: 100
     buffer: 5000
-    sinceSeconds: -1
+    sinceSeconds: 60
     fullScreenLogs: false
     textWrap: false
     showTime: false
@@ -21,6 +21,7 @@ k9s:
       namespace:
         active: all
         favorites:
+        - dev
         - all
         - databases
         - kube-system
@@ -28,10 +29,8 @@ k9s:
         - organizarrs
         - services
         - network-system
-        - cert-manager
-        - system-monitoring
       view:
-        active: cert-manager.io/v1/certificaterequests
+        active: hr
       featureGates:
         nodeShell: false
       shellPod:

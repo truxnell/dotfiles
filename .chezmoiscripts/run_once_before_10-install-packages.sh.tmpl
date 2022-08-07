@@ -4,14 +4,18 @@
 set -eufo pipefail
 
 # Install repos
+echo "install nonfree repo"
 sudo -E dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
+echo "install dnf-utils"
 sudo -E dnf install -y dnf-utils
 
 # Install vivaldi repo
+echo "install vivaldi repo"
 sudo dnf config-manager --add-repo https://repo.vivaldi.com/archive/vivaldi-fedora.repo
 
 # Install vscode repo
+echo "Install vscode"
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 
@@ -61,7 +65,9 @@ sudo -E dnf install -y \
   snapd \
   dnf-plugin-snapper \
   'google-roboto*' \
-  zoxide
+  zoxide \
+  cuetools \
+  shntool
 
 
 aur_packages=(
@@ -84,7 +90,6 @@ echo "Installing apps for native linux only (GUI apps etc)"
 {{- if and (eq .chezmoi.os "linux") (not (.chezmoi.kernel.osrelease | lower | contains "microsoft")) }}
 sudo -E dnf install -y \
   code \
-  discord \
   gimp \
   gnome-extensions-app \
   gnome-tweaks \
@@ -103,6 +108,7 @@ flatpak install -y org.raspberrypi.rpi-imager
 flatpak install -y io.dbeaver.DBeaverCommunity
 flatpak install -y io.dbeaver.DBeaverCommunity.Client.psql
 flatpak install -y io.dbeaver.DBeaverCommunity.Client.mariadb
+flatpak install -y com.discordapp.Discord
 
 #snap installs
 sudo snap install auto-cpufreq

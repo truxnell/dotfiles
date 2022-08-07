@@ -1,8 +1,5 @@
 {{- $name := "Nat Allan" -}}
 {{- $email := "19149206+Truxnell@users.noreply.github.com" -}}
-{{- $bw_email := promptString "BitWarden Email? " -}}
-{{- $external_domain := promptString "External domain? " -}}
-{{- $internal_domain := promptString "Internal domain? " -}}
 {{- $github_user := "Truxnell" -}}
 {{- $maildir := "mail" -}}
 
@@ -14,14 +11,16 @@
 
 sourceDir: {{ .chezmoi.sourceDir }}
 
+encryption: "age"
+age:
+    identity: "/home/nat/.config/sops/age/keys.txt"
+    recipient: "age12kzuwvvedndehkke84apwamungqrcavf2khwjvd46f6lkq0wqq5q3s3vth"
+
 data:
   name: "Nat Allan"
   email: "{{ $email }}"
-  bw_email: "{{ $bw_email }}"
   sync_dir: "{{ .chezmoi.sourceDir }}/private_dot_synctarget"
 
-  external_domain: "{{ $external_domain }}"
-  internal_domain: "{{ $internal_domain }}"
 
   bitwarden:
     chezmoi_folder: "d7d1e55-18d0-4010-84d6-ce3f7c2be179"
