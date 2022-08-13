@@ -11,7 +11,7 @@ k9s:
     tail: 100
     buffer: 5000
     sinceSeconds: 60
-    fullScreenLogs: false
+    fullScreenLogs: true
     textWrap: false
     showTime: false
   currentContext: admin@hegira
