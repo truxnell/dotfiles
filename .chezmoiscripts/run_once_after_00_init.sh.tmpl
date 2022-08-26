@@ -12,5 +12,6 @@ fi
 echo -e "\033[0;32m>>>>> Start syncthing service <<<<<\033[0m"
 
 # Enable syncthing
-systemctl enable --user syncthing.service --now
+# TODO - doesnt work in WSL
+#systemctl enable --user syncthing.service --now
 {{- end -}}

@@ -72,6 +72,7 @@ sudo -E dnf install -y \
   shntool \
   ShellCheck \
   yamllint \
+  which \
 
 
 aur_packages=(
@@ -128,5 +129,6 @@ echo -e "\033[0;32m>>>>> Logout/Login required to catch new user permissions  <<
 # Install automatic updates
 sudo -E dnf install dnf-automatic
 
-sudo -E systemctl enable --now dnf-automatic.timer
+# TODO - this doesnt work on WSL
+#sudo -E systemctl enable --now dnf-automatic.timer
 {{  end -}}
