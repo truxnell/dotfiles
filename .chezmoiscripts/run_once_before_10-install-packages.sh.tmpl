@@ -129,6 +129,9 @@ echo -e "\033[0;32m>>>>> Logout/Login required to catch new user permissions  <<
 # Install automatic updates
 sudo -E dnf install dnf-automatic
 
+# TODO move this somewhere tidy
+npm i -g vscode-langservers-extracted
+
 # TODO - this doesnt work on WSL
 #sudo -E systemctl enable --now dnf-automatic.timer
 {{  end -}}
