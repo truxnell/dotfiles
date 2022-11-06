@@ -5,24 +5,26 @@ end
 
 local dashboard = require "alpha.themes.dashboard"
 dashboard.section.header.val = {
-  [[                               __                ]],
-  [[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
-  [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
-  [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
-  [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
-  [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
+[[                                    oo            ]],
+[[                                                  ]],
+[[88d888b. .d8888b. .d8888b. dP   .dP dP 88d8b.d8b. ]],
+[[88'  `88 88ooood8 88'  `88 88   d8' 88 88'`88'`88 ]],
+[[88    88 88.  ... 88.  .88 88 .88'  88 88  88  88 ]],
+[[dP    dP `88888P' `88888P' 8888P'   dP dP  dP  dP ]],
 }
+
+
 dashboard.section.buttons.val = {
   dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
   dashboard.button("e", " " .. " New file", ":ene <BAR> startinsert <CR>"),
-  dashboard.button("p", " " .. " Find project", ":lua require('telescope').extensions.projects.projects()<CR>"),
+  dashboard.button("p", " " .. " Find project", ":Telescope projects<CR>"),
   dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
   dashboard.button("t", " " .. " Find text", ":Telescope live_grep <CR>"),
-  dashboard.button("c", " " .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
+  dashboard.button("c", " " .. " Config", ":e ~/.local/share/chezmoi/dot_config/nvim/init.lua <CR>"),
   dashboard.button("q", " " .. " Quit", ":qa<CR>"),
 }
 local function footer()
-  return "chrisatmachine.com"
+  return "Truxnell"
 end
 
 dashboard.section.footer.val = footer()

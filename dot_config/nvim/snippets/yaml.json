@@ -80,7 +80,7 @@
     "description": "kah-helmrelease"
   },
   "PersistentVolumeClaim": {
-    "prefix": "",
+    "prefix": "kah-pvc",
     "body": [
       "---",
       "apiVersion: v1",
@@ -104,7 +104,7 @@
     "description": ""
   },
   "kustomization": {
-    "prefix": "kustomization",
+    "prefix": "kah-kust",
     "body": [
       "---",
       "apiVersion: kustomize.config.k8s.io/v1beta1",

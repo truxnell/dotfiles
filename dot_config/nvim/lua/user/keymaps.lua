@@ -1,12 +1,12 @@
--- Shorten function name
-local keymap = vim.keymap.set
--- Silent keymap option
-local opts = { silent = true }
+-- Keybindings
 
---Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+local keymap = vim.api.nvim_set_keymap
+
+local opts = { noremap = true, silent = true }
+
+keymap("n", "<Space>", "", opts)
 vim.g.mapleader = " "
-
+vim.g.maplocalleader = " "
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -15,8 +15,19 @@ vim.g.mapleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
--- Normal --
--- Better window navigation
+-- Window navigation
+keymap("n", "<C-J>", "<C-W><C-J>", opts)
+keymap("n", "<C-K>", "<C-W><C-K>", opts)
+keymap("n", "<C-L>", "<C-W><C-L>", opts)
+keymap("n", "<C-H>", "<C-W><C-H>", opts)
+keymap("n", "<C-Q>", "<C-W><C-Q>", opts)
+keymap("n", "<C-W>t", ":tabnew<CR>", opts)
+keymap("n", "<C-W><C-t>", ":tabnew<CR>", opts)
+
+-- Clear search highlights
+keymap("n", "<C-c>", ":nohlsearch<CR>", opts)
+
+-- Remap window splits
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
@@ -32,55 +43,9 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
--- Clear highlights
-keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
-
--- Close buffers
-keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
-
--- Better paste
-keymap("v", "p", '"_dP', opts)
-
--- Insert --
--- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
-
--- Visual --
--- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
-
--- Plugins --
-
--- NvimTree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-
 -- Telescope
-keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
-keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
-keymap("n", "<leader>fg", ":Telescope git_files<CR>", opts)
+keymap("n", "<C-p>", ":lua require('telescope.builtin').git_files()<CR>", opts)
 
--- SOPS
-keymap("n", "<leader>sv", ":TermExec cmd=\"exec sops %\"<CR>", opts)
-keymap("n", "<leader>se", ":!sops -e -i %<CR>")
-keymap("n", "<leader>sd", ":!sops -d -i %<CR>")
-
--- Git
-keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
-
--- Comment
-keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
-keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')
-
--- DAP
-keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
-keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
-keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
-keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opts)
-keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", opts)
-keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
-keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
-keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
-keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+--- Why didn't I think of this?
+keymap("n", ";", ":", opts)
+-- Normal --

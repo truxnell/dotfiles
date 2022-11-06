@@ -44,7 +44,6 @@ return packer.startup(function(use)
 	use({ "wbthomason/packer.nvim", commit = "00ec5adef58c5ff9a07f11f45903b9dbbaa1b422" }) -- Have packer manage itself
 	use({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }) -- Useful lua functions used by lots of plugins
 	use({ "windwp/nvim-autopairs", commit = "fa6876f832ea1b71801c4e481d8feca9a36215ec" }) -- Autopairs, integrates with both cmp and treesitter
-	use({ "numToStr/Comment.nvim", commit = "2c26a00f32b190390b664e56e32fd5347613b9e2" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" })
 	use({ "kyazdani42/nvim-web-devicons", commit = "8d2c5337f0a2d0a17de8e751876eeb192b32310e" })
 	use({ "kyazdani42/nvim-tree.lua", commit = "bdb6d4a25410da35bbf7ce0dbdaa8d60432bc243" })
@@ -56,37 +55,30 @@ return packer.startup(function(use)
 	use({ "lewis6991/impatient.nvim", commit = "969f2c5c90457612c09cf2a13fee1adaa986d350" })
 	use({ "lukas-reineke/indent-blankline.nvim", commit = "6177a59552e35dfb69e1493fd68194e673dc3ee2" })
 	use({ "goolord/alpha-nvim", commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94" })
-  use({ "tpope/vim-unimpaired", commit="efdc6475f7ea789346716dabf9900ac04ee8604a"})
-  use({
-    "Pocco81/auto-save.nvim",
-    config = function()
-       require("auto-save").setup {
-        -- your config goes here
-        -- or just leave it empty :)
-       }
-    end,
-  })
+	use({ "tpope/vim-unimpaired", commit = "efdc6475f7ea789346716dabf9900ac04ee8604a" })
+	use({ "williamboman/mason.nvim" })
+	use({ "williamboman/mason-lspconfig.nvim" })
 	-- Colorschemes
 	use({ "folke/tokyonight.nvim", commit = "8223c970677e4d88c9b6b6d81bda23daf11062bb" })
 	use({ "lunarvim/darkplus.nvim", commit = "2584cdeefc078351a79073322eb7f14d7fbb1835" })
 
-	-- cmp plugins
-	use({ "hrsh7th/nvim-cmp", commit = "df6734aa018d6feb4d76ba6bda94b1aeac2b378a" }) -- The completion plugin
-	use({ "hrsh7th/cmp-buffer", commit = "62fc67a2b0205136bc3e312664624ba2ab4a9323" }) -- buffer completions
-	use({ "hrsh7th/cmp-path", commit = "466b6b8270f7ba89abd59f402c73f63c7331ff6e" }) -- path completions
 	use({
-		"saadparwaiz1/cmp_luasnip",
-		commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36",
+		"hrsh7th/nvim-cmp",
 		config = function()
-			require("user.luasnip")
+			require("user.cmp")
 		end,
-	}) -- snippet completions
-	use({ "hrsh7th/cmp-nvim-lsp", commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" })
-	use({ "hrsh7th/cmp-nvim-lua", commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" })
-	use({ "hrsh7th/cmp-cmdline", commit = "9c0e331fe78cab7ede1c051c065ee2fc3cf9432e" })
-	use({ "f3fora/cmp-spell", commit = "5602f1a0de7831f8dad5b0c6db45328fbd539971" })
-	use({ "hrsh7th/cmp-emoji", commit = "19075c36d5820253d32e2478b6aaf3734aeaafa0" })
-	use({ "hrsh7th/cmp-calc", commit = "f7efc20768603bd9f9ae0ed073b1c129f63eb312" })
+		requires = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"saadparwaiz1/cmp_luasnip",
+			"f3fora/cmp-spell",
+			"hrsh7th/cmp-emoji",
+			"hrsh7th/cmp-calc",
+		},
+	})
 
 	-- snippets
 	use({
@@ -95,18 +87,84 @@ return packer.startup(function(use)
 		require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" } }),
 	}) --snippet engine
 	use({ "rafamadriz/friendly-snippets", commit = "d27a83a363e61009278b6598703a763ce9c8e617" }) -- a bunch of snippets to use
+	-- Which Key, But better
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			-- require("which-key").setup({})
+			require("user.whichkey")
+		end,
+	})
+
+	-- Lua settings helper
+	use("folke/neodev.nvim")
+
+	-- Comments
+	use({ "tpope/vim-commentary", commit = "e87cd90dc09c2a203e13af9704bd0ef79303d755" })
 
 	-- LSP
 	use({ "neovim/nvim-lspconfig", commit = "148c99bd09b44cf3605151a06869f6b4d4c24455" }) -- enable LSP
-	use({ "williamboman/nvim-lsp-installer", commit = "e9f13d7acaa60aff91c58b923002228668c8c9e6" }) -- simple to use language server installer
+	-- use({ "williamboman/nvim-lsp-installer", commit = "e9f13d7acaa60aff91c58b923002228668c8c9e6" }) -- simple to use language server installer
 	use({ "jose-elias-alvarez/null-ls.nvim", commit = "ff40739e5be6581899b43385997e39eecdbf9465" }) -- for formatters and linters
-	use({ "RRethy/vim-illuminate", commit = "c82e6d04f27a41d7fdcad9be0bce5bb59fcb78e5" })
+	-- Illuminate text under cursor matches
+	use("RRethy/vim-illuminate")
+	-- LSP popup symbol info
 	use({
 		"ray-x/lsp_signature.nvim",
 		config = function()
 			require("user.lsp.signature")
 		end,
 	})
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function()
+			require("trouble").setup({})
+		end,
+	})
+	use({
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup({})
+		end,
+	})
+
+	-- LSP Symbols
+	use({
+		"simrat39/symbols-outline.nvim",
+		config = function()
+			require("symbols-outline").setup()
+		end,
+	})
+
+	-- Inline Color preview
+	-- https://github.com/norcalli/nvim-colorizer.lua
+	use({
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup()
+		end,
+	})
+
+	-- colors for LSP that does not have current
+	use("folke/lsp-colors.nvim")
+
+	-- Themer...
+	use({
+		"themercorp/themer.lua",
+	})
+
+	use({
+		"anuvyklack/pretty-fold.nvim",
+		config = function()
+			require("pretty-fold").setup()
+		end,
+	})
+	-- schemastore
+	use("b0o/schemastore.nvim")
+	--[[ word highlighting ]]
+
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 
 	-- Telescope
 	use({
