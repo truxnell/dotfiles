@@ -147,7 +147,7 @@ local mappings = {
 			"<cmd>Gitsigns diffthis HEAD<cr>",
 			"Diff",
 		},
-		g = { "<cmd>lua _LAZYGIT_TOGGLE<cr>", "LazyGit" },
+		g = { "<cmd>lua _LAZYGIT_TOGGLE()<cr>", "LazyGit" },
 	},
 
 	l = {
