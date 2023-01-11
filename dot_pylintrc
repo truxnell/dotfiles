@@ -340,6 +340,8 @@ single-line-class-stmt=no
 # else.
 single-line-if-stmt=no
 
+# EDIT NA DEC 14 2022
+good-names=i,j,k,ex,Run,_,pk,x,y
 
 [IMPORTS]
 
@@ -381,7 +383,7 @@ preferred-modules=
 
 # The type of string formatting that logging methods do. `old` means using %
 # formatting, `new` is for `{}` formatting.
-logging-format-style=old
+logging-format-style=new
 
 # Logging modules to check that the string format arguments are in logging
 # function parameter format.
