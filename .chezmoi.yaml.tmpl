@@ -9,6 +9,13 @@
 {{- $personal_imap_host := "mail.runbox.com" -}}
 {{- $personal_imap_port := 443 -}}
 
+{{- $osid := .chezmoi.os -}}
+{{- $osIDLike := ""}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{-   $osIDLike = .chezmoi.osRelease.id }}
+{{- end -}}
+
 sourceDir: {{ .chezmoi.sourceDir }}
 
 encryption: "age"
@@ -20,19 +27,5 @@ data:
   name: "Nat Allan"
   email: "{{ $email }}"
   sync_dir: "{{ .chezmoi.sourceDir }}/private_dot_synctarget"
-
-
-  bitwarden:
-    chezmoi_folder: "d7d1e55-18d0-4010-84d6-ce3f7c2be179"
-    spotify:
-    spotify_api:
-    personal_mail:
-    id_rsa: "3043cce5-e0da-4e38-8f12-b215272150e2"
-    id_rsa_pub: "0a96d136-16b3-4504-9980-245cefb40817"
-    id_ed25519: "2220444b-9b95-407f-8f10-21c86ab2d449"
-    id_ed25519_pub: "28e10bb3-fc19-455e-b1f4-fcf374d702a5"
-    kubeconfig: "2b8dcf87-460e-435a-b935-ca13b2c61fe4"
-    talosconfig: "8af7d7ba-075a-4966-9839-b9dd60f90d89"
-    sops_age: "f8b77a60-96ff-47ba-a062-0f94620c724a"
-    lastfm:
-    github_repo_token:
+  osid: {{ $osid | quote }}
+  osidlike: {{ $osIDLike | quote }}

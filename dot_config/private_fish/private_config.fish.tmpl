@@ -34,6 +34,14 @@ if type -q zoxide
     zoxide init fish | source
 end
 
+function k --wraps=kubectl --description 'kubectl shorthand'
+    if type -q kubecolor
+        kubecolor $argv
+    else
+        kubectl $argv
+    end
+end
+
 {{ if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
 if not /usr/bin/pgrep syncthing >/dev/null;
 	syncthing -no-browser 1>/dev/null 2>&1 &
