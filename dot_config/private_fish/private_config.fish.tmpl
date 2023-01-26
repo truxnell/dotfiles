@@ -24,6 +24,11 @@ if type -q chezmoi
     chezmoi completion fish | source
 end
 
+## Source chezmoi
+if type -q doppler
+    doppler completion | source
+end
+
 ## Source custom configs
 for file in $__fish_config_dir/custom.d/*.fish
     source $file
