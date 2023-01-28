@@ -115,6 +115,22 @@ data:
   sync_dir: "{{ .chezmoi.sourceDir }}/private_dot_synctarget"
   osid: {{ $osid | quote }}
   osidlike: {{ $osIDLike | quote }}
+  is:
+    personal: {{ $personal }}
+    work: {{ $work }}
+    battlestation: {{ $battlestation }}
+    ephemeral: {{ $ephemeral }}
+    headless: {{ $headless }}
+  osid: {{ $osid | quote }}
+  osidlike: {{ $osIDLike | quote }}
+  theme: "rwaltr"
+  programs:
+    terminal: {{ $terminal | quote }}
+    editor: {{ $editor | quote }}
+    visual: {{ $visual | quote }}
+    browser: "firefox"
+    vault:
+      addr: "https://vault.waltr.tech"
   font:
     gui:
       name: "Lekton Nerd Font"
