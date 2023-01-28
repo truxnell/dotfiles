@@ -1,8 +1,14 @@
+# vi: set ft=yaml
 {{- $name := "Nat Allan" -}}
 {{- $email := "19149206+Truxnell@users.noreply.github.com" -}}
 {{- $github_user := "Truxnell" -}}
-{{- $maildir := "mail" -}}
 
+{{/* boolean feature tags */}}
+{{- $battlestation := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
+{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $personal := false -}}{{/* true if this machine should have personal secrets from BitWarden */}}
+{{- $work := false -}}{{/* true if this machine should have work secrets from BitWarden */}}
 
 {{- $personal_smtp_host := "mail.runbox.com" -}}
 {{- $personal_smtp_port := 587 -}}
