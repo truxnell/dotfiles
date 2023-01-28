@@ -46,6 +46,48 @@
 {{-     end -}}
 {{-   end -}}
 
+{{-     if hasKey . ".is.personal" -}}
+{{-       $personal = .is.personal -}}
+{{-     else -}}
+{{-       $personal = promptBool "personal" -}}
+{{-     end -}}
+
+{{-     if hasKey . "work" -}}
+{{-       $work = .work -}}
+{{-     else -}}
+{{-       $work = promptBool "work" -}}
+{{-     end -}}
+
+{{-     if hasKey . "ephemeral" -}}
+{{-       $ephemeral = .ephemeral -}}
+{{-     else -}}
+{{-       $ephemeral = promptBool "ephemeral" -}}
+{{-     end -}}
+
+{{-     if hasKey . "battlestation" -}}{{/* True if this machine is attached to the battlestation workstation */}}
+{{-       $battlestation = .battlestation -}}
+{{-     else -}}
+{{-       $battlestation = promptBool "battlestation" -}}
+{{-     end -}}
+
+{{-   else -}}
+{{-     $headless = true -}}
+{{-     $ephemeral = true -}}
+{{-   end -}}
+{{- $hostname := .chezmoi.hostname -}}
+{{- if not $ephemeral -}}
+{{-   if eq $hostname "monolith" -}}
+{{-     $headless = false -}}
+{{-     $personal = true -}}
+{{-     $battlestation = true -}}
+{{-   else if stdinIsATTY -}}
+{{-     if hasKey . "headless" -}}
+{{-       $headless = .headless -}}
+{{-     else -}}
+{{-       $headless = promptBool "headless" -}}
+{{-     end -}}
+{{-   end -}}
+
 sourceDir: {{ .chezmoi.sourceDir }}
 
 encryption: "age"
