@@ -30,32 +30,6 @@ pkg update
 pkg upgrade
 pkg install chezmoi
 
-```
-
-```
-pkg install \
-git \
-curl \
-wget \
-zip \
-unzip \
-k9s \
-kubectl \
-helm \
-python \
-jq \
-grep \
-htop \
-httping \
-dnsutils \
-nmap \
-ffmpeg \
-nvim \
-fish
-screenfetch \
-ddgr \
-cowsay \
-
-
-
+# Init chezmoi
+chezmoi init truxnell
 ```
