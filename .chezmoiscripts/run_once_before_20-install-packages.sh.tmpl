@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Define colors
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+# Function to print a message with a color
+print_msg() {
+	local msg=$1
+	local color=$2
+	echo -e "${color}${msg}${NC}"
+}
+
+# Name of the file containing the list of packages
+{{- if (eq .chezmoi.os "fedora") -}}
+PACKAGE_FILE="~/.config/.chezmoi_packages/fedora.txt"
+# ~/.config/.chezmoi_packages/fedora.txt hash: {{ include "~/.config/.chezmoi_packages/fedora.txt" | sha256sum }}
+{{- end -}}
+
+{{- if (eq .chezmoi.os "android") -}}
+PACKAGE_FILE="~/.config/.chezmoi_packages/fedora.txt"
+# .chezmoiscripts/packages/android.txt hash: {{ include "~/.config/.chezmoi_packages/android.txt" | sha256sum }}
+{{- end -}}
+
+# Source the colors.sh file to import the print_msg() function
+source ./colors.sh
+
+print_msg "Starting {{ .chezmoi.osRelease.prettyName }} package installation..." $GREEN
+
+# Print a message to indicate that the script is starting
+print_msg "Starting package installation..." $GREEN
+
+# Loop over each package name in the file and install it using dnf
+while read package; do
+  # Print a message to indicate which package is being installed
+  print_msg "Installing $package..." $YELLOW
+  sudo dnf install -y $package
+done < $PACKAGE_FILE
+
+# Print a message to indicate that the script is finished
+print_msg "All packages installed successfully!" $GREEN
