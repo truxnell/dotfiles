@@ -37,7 +37,7 @@ while read package; do
   # Print a message to indicate which package is being installed
   print_msg "Installing $package..." $YELLOW
   sudo dnf install -y $package
-done < $PACKAGE_FILE
+done < "$PACKAGE_FILE"
 
 # Print a message to indicate that the script is finished
 print_msg "All packages installed successfully!" $GREEN
