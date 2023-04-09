@@ -1,4 +1,0 @@
-[auth]
-	bw_age = "AGE Key"
-	bw_rsa = "RSA Key"
-	bw_identity  = "Whoami"

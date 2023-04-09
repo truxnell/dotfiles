@@ -24,6 +24,11 @@ if type -q chezmoi
     chezmoi completion fish | source
 end
 
+## Source chezmoi
+if type -q doppler
+    doppler completion | source
+end
+
 ## Source custom configs
 for file in $__fish_config_dir/custom.d/*.fish
     source $file
@@ -32,6 +37,14 @@ end
 ## Source zoxide
 if type -q zoxide
     zoxide init fish | source
+end
+
+function k --wraps=kubectl --description 'kubectl shorthand'
+    if type -q kubecolor
+        kubecolor $argv
+    else
+        kubectl $argv
+    end
 end
 
 {{ if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}

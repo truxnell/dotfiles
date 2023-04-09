@@ -1,5 +1,4 @@
-
-sourceDir: {{ .chezmoi.sourceDir }}
+sourceDir: {{ .chezmoi.sourceDir | quote }}
 
 encryption: "age"
 age:
@@ -10,5 +9,3 @@ data:
   name: "Nat Allan"
   email: "admin@natallan.com"
   sync_dir: "{{ .chezmoi.sourceDir }}/private_dot_synctarget"
-
-

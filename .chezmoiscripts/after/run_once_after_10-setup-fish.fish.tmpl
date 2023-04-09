@@ -1,0 +1,84 @@
+{{- if eq .chezmoi.os "linux" -}}
+#!{{ lookPath "fish" }}
+
+echo -e "\033[0;32m>>>>> Begin Setting Up Fish shell <<<<<\033[0m"
+
+
+## Install fisher
+if not type -q fisher
+  echo "installing fisher"
+  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+end
+
+function install_fisher_plugin
+  set check_installed_fisher (fisher list | grep $argv)
+  if test $check_installed_fisher = $argv
+    echo "$argv is already installed"
+  else
+    echo "installing $argv"
+    fisher install $argv
+  end
+end
+
+## Install fish plugins
+install_fisher_plugin PatrickF1/fzf.fish
+install_fisher_plugin nickeb96/puffer-fish
+install_fisher_plugin jorgebucaran/autopair.fish
+install_fisher_plugin gazorby/fish-abbreviation-tips
+install_fisher_plugin IlanCosman/tide@v5
+install_fisher_plugin jethrokuan/z
+install_fisher_plugin decors/fish-colored-man
+
+echo "Install fzf key bindings"
+# Install fzf bindings
+fzf_configure_bindings
+
+## Setup completions
+echo -e "\033[0;32m>>>>> Setting up Fish completions <<<<<\033[0m"
+
+if not test -d $__fish_config_dir/completions
+  mkdir -p $__fish_config_dir/completions
+end
+
+if type -q chezmoi
+  echo "setting up chezmoi completion"
+  chezmoi completion fish --output=$__fish_config_dir/completions/chezmoi.fish
+end
+
+if type -q flux
+  echo "setting up flux completion"
+  flux completion fish > $__fish_config_dir/completions/flux.fish
+end
+
+if type -q kustomize
+  echo "setting up kustomize completion"
+  kustomize completion fish > $__fish_config_dir/completions/kustomize.fish
+end
+
+if type -q kubectl
+  echo "setting up kubectl completion"
+  kubectl completion fish > $__fish_config_dir/completions/kubectl.fish
+end
+
+if type -q helm
+    echo "setting up helm completion"
+    helm completion fish > ~/.config/fish/completions/helm.fish
+end
+
+if type -q velero
+    echo "setting up velero completion"
+    velero completion fish > ~/.config/fish/completions/velero.fish
+end
+
+if type -q talosctl
+    echo "setting up talosctl completion"
+    talosctl completion fish > ~/.config/fish/completions/talosctl.fish
+end
+
+if type -q k9s
+  echo "setting up k9s completion"
+  k9s completion fish > $__fish_config_dir/completions/k9s.fish
+end
+
+echo -e "\033[0;32m>>>>> Finish Setting Up Fish shell <<<<<\033[0m"
+{{- end -}}
