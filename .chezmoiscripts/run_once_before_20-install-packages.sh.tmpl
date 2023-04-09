@@ -15,14 +15,10 @@ print_msg() {
 
 # Name of the file containing the list of packages
 {{- if (eq .chezmoi.os "fedora") -}}
-PACKAGE_FILE="~/.config/.chezmoi_packages/fedora.txt"
-# ~/.config/.chezmoi_packages/fedora.txt hash: {{ include "~/.config/.chezmoi_packages/fedora.txt" | sha256sum }}
+PACKAGE_FILE="{{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora.txt"
+# {{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora.txt hash: {{ include "{{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora.txt" | sha256sum }}
 {{- end -}}
 
-{{- if (eq .chezmoi.os "android") -}}
-PACKAGE_FILE="~/.config/.chezmoi_packages/fedora.txt"
-# .chezmoiscripts/packages/android.txt hash: {{ include "~/.config/.chezmoi_packages/android.txt" | sha256sum }}
-{{- end -}}
 
 # Source the colors.sh file to import the print_msg() function
 source ./colors.sh
