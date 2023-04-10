@@ -14,26 +14,32 @@ print_msg() {
 }
 
 # Name of the file containing the list of packages
-{{- if (eq .chezmoi.os "fedora") -}}
+{{ if (eq .chezmoi.osRelease.id "fedora") -}}
+print_msg "Detected Fedora, triggering update" $GREEN
 PACKAGE_FILE="{{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora.txt"
-# {{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora.txt hash: {{ include "{{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora.txt" | sha256sum }}
-{{- end -}}
+# {{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora.txt hash: {{ include "dot_config/dot_chezmoi_packages/fedora.txt" | sha256sum }}
 
 
-# Source the colors.sh file to import the print_msg() function
-source ./colors.sh
+sudo dnf upgrade
+{{ end -}}
 
 print_msg "Starting {{ .chezmoi.osRelease.prettyName }} package installation..." $GREEN
 
 # Print a message to indicate that the script is starting
-print_msg "Starting package installation..." $GREEN
+print_msg "Starting package installation... $PACKAGE_FILE" $GREEN
 
-# Loop over each package name in the file and install it using dnf
+packages=""
+
+# Loop over each package name and create one big list
 while read package; do
-  # Print a message to indicate which package is being installed
-  print_msg "Installing $package..." $YELLOW
-  sudo dnf install -y $package
+  packages="$packages $package"
 done < "$PACKAGE_FILE"
+
+# Install all packages using dnf
+if [[ -n "$packages" ]]; then
+  print_msg "Installing packages: $packages..." $YELLOW
+  sudo dnf install -y $packages
+fi
 
 # Print a message to indicate that the script is finished
 print_msg "All packages installed successfully!" $GREEN
