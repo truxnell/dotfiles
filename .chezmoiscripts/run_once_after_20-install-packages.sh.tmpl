@@ -17,18 +17,26 @@ print_msg() {
 {{ if (eq .os "fedora") -}}
   print_msg "Detected Fedora, triggering update" $GREEN
   PACKAGE_FILE="{{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora.txt"
-# {{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora.txt hash: {{ include "dot_config/dot_chezmoi_packages/fedora.txt" | sha256sum }}
+  # {{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora.txt hash: {{ include "dot_config/dot_chezmoi_packages/fedora.txt" | sha256sum }}
+  sudo dnf upgrade
+{{ end -}}
 
+# Setup android cli utils
+{{ if (eq .os "android") -}}
+  print_msg "Detected Android, triggering update" $GREEN
+  PACKAGE_FILE="{{ .chezmoi.homeDir }}/.config/.chezmoi_packages/android.txt"
+  # {{ .chezmoi.homeDir }}/.config/.chezmoi_packages/android.txt hash: {{ include "dot_config/dot_chezmoi_packages/android.txt" | sha256sum }}
   sudo dnf upgrade
 {{ end -}}
 
 # Setup fedora ui utils
 {{ if and (eq .os "fedora") (eq .gui true) -}}
   print_msg "Detected GUI, adding Fedora GUI packages" $GREEN
-  PACKAGE_FILE_2="{{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora-ui.txt"
-# {{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora.txt hash: {{ include "dot_config/dot_chezmoi_packages/fedora.txt" | sha256sum }}
+  PACKAGE_FILE2="{{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora-ui.txt"
+  # {{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora-ui.txt hash: {{ include "dot_config/dot_chezmoi_packages/fedora-ui.txt" | sha256sum }}
 
 {{ end -}}
+
 if [ -z "$PACKAGE_FILE" ]; then
   print_msg "No valid OS detected, could not determine what packages to install.  Exiting..." $RED
   exit 1
@@ -45,6 +53,16 @@ packages=""
 while read package; do
   packages="$packages $package"
 done < "$PACKAGE_FILE"
+
+# If second list present, append to list
+if [[ ! -z "$PACKAGE_FILE2" ]]; then
+
+print_msg "adding gui packages..." $GREEN
+  # Loop over each package name and create one big list
+  while read package; do
+    packages="$packages $package"
+  done < "$PACKAGE_FILE"
+fi
 
 # Install all packages using dnf
 if [[ -n "$packages" ]]; then
