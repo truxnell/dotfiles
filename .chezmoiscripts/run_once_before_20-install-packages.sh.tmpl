@@ -13,15 +13,26 @@ print_msg() {
 	echo -e "${color}${msg}${NC}"
 }
 
-# Name of the file containing the list of packages
-{{ if (eq .chezmoi.osRelease.id "fedora") -}}
-print_msg "Detected Fedora, triggering update" $GREEN
-PACKAGE_FILE="{{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora.txt"
+# Setup fedora cli utils
+{{ if (eq .os "fedora") -}}
+  print_msg "Detected Fedora, triggering update" $GREEN
+  PACKAGE_FILE="{{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora.txt"
 # {{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora.txt hash: {{ include "dot_config/dot_chezmoi_packages/fedora.txt" | sha256sum }}
 
-
-sudo dnf upgrade
+  sudo dnf upgrade
 {{ end -}}
+
+# Setup fedora ui utils
+{{ if and (eq .os "fedora") (eq .gui true) -}}
+  print_msg "Detected GUI, adding Fedora GUI packages" $GREEN
+  PACKAGE_FILE_2="{{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora-ui.txt"
+# {{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora.txt hash: {{ include "dot_config/dot_chezmoi_packages/fedora.txt" | sha256sum }}
+
+{{ end -}}
+if [ -z "$PACKAGE_FILE" ]; then
+  print_msg "No valid OS detected, could not determine what packages to install.  Exiting..." $RED
+  exit 1
+fi
 
 print_msg "Starting {{ .chezmoi.osRelease.prettyName }} package installation..." $GREEN
 

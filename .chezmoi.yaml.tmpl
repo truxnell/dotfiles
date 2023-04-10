@@ -1,3 +1,18 @@
+# Determine what OS were on
+{{ $os := "" }}
+{{ $gui := false }}
+# Fedora workstation
+{{ if and (eq .chezmoi.osRelease.id "fedora") (eq .chezmoi.osRelease.variantID "workstation") -}}
+  {{ $os = "fedora" }}
+  {{ $gui = true }}
+{{ end -}}
+
+# Android
+{{ if (eq .chezmoi.osRelease.id "android") "workstation") -}}
+  {{ $os = "android" }}
+  {{ $gui = false }}
+{{ end -}}
+
 sourceDir: {{ .chezmoi.sourceDir | quote }}
 
 encryption: "age"
@@ -6,6 +21,8 @@ age:
     recipient: "age12kzuwvvedndehkke84apwamungqrcavf2khwjvd46f6lkq0wqq5q3s3vth"
 
 data:
+  os: {{ $os }}
+  gui: {{ $gui }}
   name: "Nat Allan"
   email: "admin@natallan.com"
   sync_dir: "{{ .chezmoi.sourceDir }}/private_dot_synctarget"
