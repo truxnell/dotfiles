@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # Define colors
@@ -19,9 +18,14 @@ print_msg "Installing AGE key ==================================================
 # Setup fedora cli utils
 {{ if (eq .os "fedora") -}}
   print_msg "Detected Fedora, installing tools" $GREEN
-  sudo dnf upgrade
   
-  dnf install -y doppler jq gnupg
+  # Install doppler repo
+  sudo rpm --import 'https://packages.doppler.com/public/cli/gpg.DE2A7741A397C129.key'
+  curl -sLf --retry 3 --tlsv1.2 --proto "=https" 'https://packages.doppler.com/public/cli/config.rpm.txt' | sudo tee /etc/yum.repos.d/doppler-cli.repo
+  
+  # install pre-reqs
+  sudo dnf upgrade
+  sudo dnf install -y doppler jq gnupg
   
   # doppler login
   doppler secrets download -p chezmoi -c prd --no-file  | jq -r '.AGE_KEY' > ~/.config/sops/age/keys.txt
