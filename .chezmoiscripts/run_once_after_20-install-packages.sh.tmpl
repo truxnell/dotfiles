@@ -13,6 +13,7 @@ print_msg() {
 	echo -e "${color}${msg}${NC}"
 }
 
+print_msg "Package installs ========================================================" $YELLOW
 # Setup fedora cli utils
 {{ if (eq .os "fedora") -}}
   print_msg "Detected Fedora, triggering update" $GREEN
