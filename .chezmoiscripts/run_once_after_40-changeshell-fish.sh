@@ -19,7 +19,7 @@ print_msg "Ensure Fish shell ===========================================" $YELLO
 # Set fish as default shell
 if [ $SHELL != $(which fish) ]; then
 
-	print_msg "Changin shell to fish ===========================================" $GREEN
+	print_msg "Changing shell to fish ===========================================" $GREEN
 	echo "Changing default shell to fish"
 	chsh -s $(which fish)
 else
