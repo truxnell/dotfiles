@@ -1,9 +1,0 @@
-function cat --description 'cat but bat'
-    if count $argv > /dev/null
-        if type -q bat
-            bat --theme Dracula --paging=never --style plain $argv
-        else
-            {{ lookPath "cat" }} $argv
-        end
-    end
-end
