@@ -43,3 +43,4 @@ which
 wireguard-tools
 yamllint
 zoxide
+openssl
