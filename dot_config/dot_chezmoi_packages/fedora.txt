@@ -32,7 +32,6 @@ rpmfusion-nonfree-release-tainted
 ShellCheck
 shntool
 snapd
-starship
 syncthing
 terraform
 tree
