@@ -1,2 +1,4 @@
 gimp
+yubikey-personalization-gui
+yubikey-manager-qt
 
