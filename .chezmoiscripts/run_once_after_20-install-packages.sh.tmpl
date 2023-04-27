@@ -62,7 +62,7 @@ print_msg "adding gui packages..." $GREEN
   # Loop over each package name and create one big list
   while read package; do
     packages="$packages $package"
-  done < "$PACKAGE_FILE"
+  done < "$PACKAGE_FILE2"
 fi
 
 # Install all packages using dnf
