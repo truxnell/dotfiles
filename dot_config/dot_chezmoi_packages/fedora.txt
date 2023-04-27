@@ -44,3 +44,5 @@ wireguard-tools
 yamllint
 zoxide
 openssl
+ykpers
+yubikey-manager
