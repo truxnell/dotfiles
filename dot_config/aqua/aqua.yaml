@@ -32,3 +32,4 @@ packages:
   - name: kopia/kopia@v0.12.1
   - name: gruntwork-io/terragrunt@v0.45.2
   - name: topgrade-rs/topgrade@v10.3.3
+  - name: bitwarden/clients@cli-v2023.4.0
