@@ -138,12 +138,12 @@ return {
   },
 
   -- better yank/paste
-  {
-    "kkharji/sqlite.lua",
-    enabled = function()
-      return require("lazyvim.util").has("yanky.nvim") and not jit.os:find("Windows")
-    end,
-  },
+  -- {
+  --   "kkharji/sqlite.lua",
+  --   enabled = function()
+  --     return require("lazyvim.util").has("yanky.nvim") and not jit.os:find("Windows")
+  --   end,
+  -- },
   {
     "gbprod/yanky.nvim",
     enabled = false,
