@@ -3,6 +3,7 @@ return {
   {
     "williamboman/mason.nvim",
     opts = {
+      automatic_installation = true,
       ensure_installed = {
         "prettierd",
         "stylua",
@@ -16,6 +17,10 @@ return {
         "isort",
         "flake8",
         "pylint",
+        "yamlls",
+        "tflint",
+        "dockerls",
+        "terraformls",
       },
     },
   },
