@@ -2,7 +2,6 @@ ack
 age
 android-tools
 ansible
-aqua
 bat
 codespell
 cronie
