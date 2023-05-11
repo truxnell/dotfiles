@@ -28,12 +28,10 @@ nmap
 python-pip
 restic
 ripgrep
-rpmfusion-nonfree-release-tainted
 ShellCheck
 shntool
 snapd
 syncthing
-terraform
 tree
 unzip
 util-linux-user
