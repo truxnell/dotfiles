@@ -26,8 +26,8 @@ print_msg "Installing AGE key ==================================================
   # install pre-reqs
   sudo dnf upgrade
   sudo dnf install -y doppler jq gnupg
-  mkdir -p {{- chezmoi.homeDir -}}/.config/sops/age/
-  touch {{- chezmoi.homeDir -}}/.config/sops/age/keys.txt
+  mkdir -p {{ .chezmoi.homeDir }}/.config/sops/age/
+  touch {{ .chezmoi.homeDir }}/.config/sops/age/keys.txt
   
   # doppler login
   doppler login
