@@ -33,3 +33,4 @@ packages:
   - name: gruntwork-io/terragrunt@v0.45.2
   - name: topgrade-rs/topgrade@v11.0.2
   - name: bitwarden/clients@cli-v2023.4.0
+  - name: sachaos/viddy@v0.3.6
