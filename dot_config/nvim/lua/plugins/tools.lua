@@ -1,5 +1,7 @@
 return {
 
+  { "pwntester/octo.nvim", opts = {}, cmd = "Octo" },
+
   -- markdown preview
   {
     "toppair/peek.nvim",
