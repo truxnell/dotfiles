@@ -16,7 +16,7 @@ return {
         "isort",
         "flake8",
         "pylint",
-        "yamlls",
+        -- "yamlls",
         "tflint",
       },
     },
@@ -130,24 +130,22 @@ return {
         debounce = 150,
         save_after_format = false,
         sources = {
-          -- nls.builtins.formatting.prettierd,
+          nls.builtins.formatting.prettierd,
           nls.builtins.formatting.stylua,
           nls.builtins.formatting.fish_indent,
           -- nls.builtins.formatting.fixjson.with({ filetypes = { "jsonc" } }),
           -- nls.builtins.formatting.eslint_d,
-          -- nls.builtins.diagnostics.shellcheck,
+          nls.builtins.diagnostics.shellcheck,
           nls.builtins.formatting.shfmt,
           nls.builtins.diagnostics.markdownlint,
-          -- nls.builtins.diagnostics.luacheck,
-          nls.builtins.formatting.prettierd.with({
-            filetypes = { "markdown" }, -- only runs `deno fmt` for markdown
-          }),
+          nls.builtins.diagnostics.luacheck,
+          nls.builtins.formatting.prettierd,
           nls.builtins.diagnostics.selene.with({
             condition = function(utils)
               return utils.root_has_file({ "selene.toml" })
             end,
           }),
-          -- nls.builtins.code_actions.gitsigns,
+          nls.builtins.code_actions.gitsigns,
           nls.builtins.formatting.isort,
           nls.builtins.formatting.black,
           nls.builtins.diagnostics.flake8,
