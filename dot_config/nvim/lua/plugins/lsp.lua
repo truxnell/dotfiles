@@ -16,7 +16,7 @@ return {
         "isort",
         "flake8",
         "pylint",
-        -- "yamlls",
+        "yamlls",
         "tflint",
       },
     },
