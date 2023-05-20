@@ -43,3 +43,4 @@ zoxide
 openssl
 ykpers
 yubikey-manager
+pinentry-tty
