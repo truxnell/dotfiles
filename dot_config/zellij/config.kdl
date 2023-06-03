@@ -257,7 +257,7 @@ default_layout "compact"
 // Examples:
 //
 // copy_command "xclip -selection clipboard" // x11
-// copy_command "wl-copy"                    // wayland
+copy_command "wl-copy"                    // wayland
 // copy_command "pbcopy"                     // osx
 
 // Choose the destination for copied text
@@ -267,7 +267,7 @@ default_layout "compact"
 //   - system (default)
 //   - primary
 //
-copy_clipboard "system"
+// copy_clipboard "system"
 
 // Enable or disable automatic copy (and clear) of selection when releasing mouse
 // Default: true
