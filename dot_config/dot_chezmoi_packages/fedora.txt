@@ -31,6 +31,7 @@ ripgrep
 ShellCheck
 shntool
 snapd
+irssi
 syncthing
 tree
 unzip
