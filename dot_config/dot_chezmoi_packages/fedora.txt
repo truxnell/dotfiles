@@ -45,3 +45,4 @@ openssl
 ykpers
 yubikey-manager
 pinentry-tty
+net-tools
