@@ -144,7 +144,6 @@ chatnets = {
     max_msgs = "1";
     max_whois = "1";
   };
-  "voltaicforge.com" = { type = "IRC"; };
 };
 
 channels = (
