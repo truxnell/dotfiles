@@ -1,7 +1,7 @@
 servers = (
   { address = "irc.dal.net"; chatnet = "DALnet"; port = "6667"; },
   {
-    address = "irc.voltaicforge.com";
+    address = "10.8.20.223";
     chatnet = "voltaicforge.com";
     port = "6697";
     use_ssl = "yes";
