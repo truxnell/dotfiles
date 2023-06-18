@@ -1,0 +1,9 @@
+nvim
+ltex-ls
+lua
+lsp
+Lazyvim
+neovim
+Neovim
+ltex-extra
+autocmds

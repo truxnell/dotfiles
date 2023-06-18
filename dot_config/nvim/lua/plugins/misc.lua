@@ -1,27 +1,4 @@
 return {
-  "folke/twilight.nvim",
-
-  {
-    "Wansmer/treesj",
-    keys = {
-      { "J", "<cmd>TSJToggle<cr>", desc = "Join Toggle" },
-    },
-    opts = { use_default_keymaps = false, max_join_length = 150 },
-  },
-
-  {
-    "cshuaimin/ssr.nvim",
-    keys = {
-      {
-        "<leader>sR",
-        function()
-          require("ssr").open()
-        end,
-        mode = { "n", "x" },
-        desc = "Structural Replace",
-      },
-    },
-  },
 
   {
     "folke/zen-mode.nvim",
@@ -36,11 +13,46 @@ return {
     keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
   },
 
+  -- twilight
   {
-    "andymass/vim-matchup",
-    event = "BufReadPost",
-    config = function()
-      vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
-    end,
+    "folke/twilight.nvim",
+    dependencies = {
+      {
+        "nvim-treesitter/nvim-treesitter",
+      },
+    },
   },
+
+  {
+    "ahmedkhalf/project.nvim",
+    opts = {},
+    event = "VeryLazy",
+    config = function(_, opts)
+      require("project_nvim").setup(opts)
+      require("telescope").load_extension("projects")
+    end,
+    keys = {
+      { "<leader>fp", "<Cmd>Telescope projects<CR>", desc = "Projects" },
+    },
+  },
+  -- -- markdown preview
+  -- {
+  --   "toppair/peek.nvim",
+  --   build = "deno task --quiet build:fast",
+  --   keys = {
+  --     {
+  --       "<leader>op",
+  --       function()
+  --         local peek = require("peek")
+  --         if peek.is_open() then
+  --           peek.close()
+  --         else
+  --           peek.open()
+  --         end
+  --       end,
+  --       desc = "Peek (Markdown Preview)",
+  --     },
+  --   },
+  --   opts = { theme = "light" },
+  -- },
 }
