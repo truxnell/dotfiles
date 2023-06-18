@@ -36,6 +36,7 @@ return {
       ---@type lspconfig.options
       servers = {
         ltex = {
+          filetypes = { "text", "markdown" },
           on_attach = function(client, bufnr)
             print("Loading ltex from ltex_extra")
             require("ltex_extra").setup({

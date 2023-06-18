@@ -7,3 +7,4 @@ neovim
 Neovim
 ltex-extra
 autocmds
+InterJam
