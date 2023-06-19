@@ -47,3 +47,4 @@ yubikey-manager
 pinentry-tty
 net-tools
 dnsutils
+nodejs
