@@ -13,7 +13,7 @@
 {{ end -}}
 
 # Android
-{{ if (eq .chezmoi.osRelease.id "android") -}}
+{{ if (eq .chezmoi.os "android") -}}
   {{ $os = "android" }}
   {{ $gui = false }}
 {{ end -}}
