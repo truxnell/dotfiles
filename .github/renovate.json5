@@ -21,34 +21,4 @@
       ]
     }
   ],
-  packageRules: [
-    {
-      matchUpdateTypes: ["major"],
-      semanticCommitType: "feat!",
-    },
-    {
-      matchUpdateTypes: ["minor"],
-      semanticCommitType: "feat",
-    },
-    {
-      matchUpdateTypes: ["patch"],
-      semanticCommitType: "fix",
-    },
-    {
-      matchManagers: ["github-actions"],
-      automerge: true,
-      automergeType: "branch",
-      requiredStatusChecks: null,
-      matchUpdateTypes: ["minor", "patch"],
-    },
-    {
-      automerge: true,
-      automergeType: "branch",
-      requiredStatusChecks: null,
-      matchUpdateTypes: ["minor", "patch"],
-      "matchPackageNames": [
-        "aquaproj/aqua-registry"
-      ]
-    }
-  ]
 }
