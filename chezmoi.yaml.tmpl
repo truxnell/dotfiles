@@ -7,13 +7,13 @@
   {{ $gui = true }}
 {{ end -}}
 
-{{ if and (eq .chezmoi.osRelease.id "fedoraremixforwsl") -}}
+{{ if eq .chezmoi.osRelease.id "fedoraremixforwsl" -}}
   # Feodra Remix in WSL
   {{ $os = "fedora" }}
   {{ $gui = false }}
 {{ end -}}
 
-{{ if (eq .chezmoi.os "android") -}}
+{{ if eq .chezmoi.os "android" -}}
   # Android
   {{ $os = "android" }}
   {{ $gui = false }}
