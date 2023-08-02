@@ -27,6 +27,8 @@ age:
     recipient: "age12kzuwvvedndehkke84apwamungqrcavf2khwjvd46f6lkq0wqq5q3s3vth"
 
 data:
+  os: {{ .chezmoi.os }}
+  osr: {{ .chezmoi.osRelease }}
   os: {{ $os }}
   gui: {{ $gui }}
   name: "Nat Allan"
