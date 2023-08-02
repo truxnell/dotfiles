@@ -11,6 +11,7 @@
   "username": "trux-bot[bot]",
   "gitAuthor": "Trux-Bot <19149206+trux-bot[bot]@users.noreply.github.com>",
   "repositories": ["truxnell/vyos-config"],
+  "ignoreTests": true,
   "automerge": true,
   "regexManagers": [
     {
