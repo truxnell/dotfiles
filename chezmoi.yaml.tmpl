@@ -1,19 +1,20 @@
 # Determine what OS were on
 {{ $os := "" }}
 {{ $gui := false }}
-# Fedora workstation
 {{ if and (eq .chezmoi.osRelease.id "fedora") (eq .chezmoi.osRelease.variantID "workstation") -}}
+  # Fedora workstation
   {{ $os = "fedora" }}
   {{ $gui = true }}
 {{ end -}}
 
 {{ if and (eq .chezmoi.osRelease.id "fedoraremixforwsl") -}}
+  # Feodra Remix in WSL
   {{ $os = "fedora" }}
   {{ $gui = false }}
 {{ end -}}
 
-# Android
 {{ if (eq .chezmoi.os "android") -}}
+  # Android
   {{ $os = "android" }}
   {{ $gui = false }}
 {{ end -}}
