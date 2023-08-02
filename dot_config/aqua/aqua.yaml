@@ -1,40 +1,40 @@
 registries:
   - type: standard
-    ref: v4.31.0 # renovate: depName=aquaproj/aqua-registry
+    ref: v4.32.1 # renovate: depName=aquaproj/aqua-registry
 packages:
-  - name: twpayne/chezmoi@v2.33.5
+  - name: twpayne/chezmoi@v2.36.1
   - name: starship/starship@v1.16.0
   - name: BurntSushi/ripgrep@13.0.0
   - name: sharkdp/fd@v8.7.0
   - name: sharkdp/bat@v0.23.0
   - name: blacknon/hwatch@0.3.10
   - name: FiloSottile/age@v1.1.1
-  - name: cli/cli@v2.27.0
-  - name: golang/go@1.20.4
-  - name: go-task/task@v3.23.0
-  - name: direnv/direnv@v2.32.2
-  - name: kubernetes/kubectl@v1.27.1
+  - name: cli/cli@v2.32.1
+  - name: golang/go@1.20.7
+  - name: go-task/task@v3.28.0
+  - name: direnv/direnv@v2.32.3
+  - name: kubernetes/kubectl@v1.27.4
   - name: fluxcd/flux2@v0.41.2
-  - name: kubernetes-sigs/kustomize@kustomize/v5.0.3
+  - name: kubernetes-sigs/kustomize@kustomize/v5.1.1
   - name: mozilla/sops@v3.7.3
-  - name: helm/helm@v3.12.0
+  - name: helm/helm@v3.12.2
   - name: siderolabs/talos@v1.3.7
   - name: derailed/k9s@v0.27.4
   - name: derailed/popeye@v0.11.1
-  - name: kubernetes-sigs/cluster-api@v1.4.2
-  - name: zellij-org/zellij@v0.36.0
-  - name: mikefarah/yq@v4.33.3
+  - name: kubernetes-sigs/cluster-api@v1.5.0
+  - name: zellij-org/zellij@v0.37.2
+  - name: mikefarah/yq@v4.34.2
   - name: github/hub@v2.14.2
-  - name: jesseduffield/lazygit@v0.35
-  - name: sbstp/kubie@v0.19.3
-  - name: yannh/kubeconform@v0.6.1
-  - name: cue-lang/cue@v0.4.3
+  - name: jesseduffield/lazygit@v0.39.4
+  - name: sbstp/kubie@v0.21.0
+  - name: yannh/kubeconform@v0.6.3
+  - name: cue-lang/cue@v0.5.0
   - name: kopia/kopia@v0.13.0
-  - name: gruntwork-io/terragrunt@v0.45.2
-  - name: topgrade-rs/topgrade@v11.0.2
+  - name: gruntwork-io/terragrunt@v0.48.5
+  - name: topgrade-rs/topgrade@v12.0.2
   - name: bitwarden/clients@cli-v2023.4.0
   - name: sachaos/viddy@v0.3.6
   - name: sharkdp/vivid@v0.9.0
-  - name: gohugoio/hugo/hugo-extended@v0.111.3
-  - name: denoland/deno@v1.34.3
-  - name: cloudflare/cloudflared@2023.5.1
+  - name: gohugoio/hugo/hugo-extended@v0.116.1
+  - name: denoland/deno@v1.35.3
+  - name: cloudflare/cloudflared@2023.7.3
