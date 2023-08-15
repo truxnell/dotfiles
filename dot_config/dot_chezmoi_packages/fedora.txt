@@ -48,3 +48,4 @@ pinentry-tty
 net-tools
 dnsutils
 nodejs
+lazygit

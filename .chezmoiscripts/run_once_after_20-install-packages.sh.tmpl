@@ -20,6 +20,8 @@ print_msg "Package installs ====================================================
   PACKAGE_FILE="{{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora.txt"
   # {{ .chezmoi.homeDir }}/.config/.chezmoi_packages/fedora.txt hash: {{ include "dot_config/dot_chezmoi_packages/fedora.txt" | sha256sum }}
   sudo dnf upgrade
+  print_msg "Adding coprs" $GREEN
+  sudo dnf copr enable atim/lazygit -y
 {{ end -}}
 
 # Setup android cli utils
