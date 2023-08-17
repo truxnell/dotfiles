@@ -49,3 +49,4 @@ net-tools
 dnsutils
 nodejs
 lazygit
+go-task
