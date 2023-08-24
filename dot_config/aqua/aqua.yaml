@@ -14,7 +14,7 @@ packages:
   - name: go-task/task@v3.28.0
   - name: direnv/direnv@v2.32.3
   - name: kubernetes/kubectl@v1.28.0
-  - name: fluxcd/flux2@v2.0.1
+  - name: fluxcd/flux2@v2.1.0
   - name: kubernetes-sigs/kustomize@kustomize/v5.1.1
   - name: mozilla/sops@v3.7.3
   - name: helm/helm@v3.12.3
