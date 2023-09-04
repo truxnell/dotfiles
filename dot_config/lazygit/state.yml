@@ -1,10 +1,10 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/nat/.local/share/chezmoi
 - /home/nat/git/Truxnell/pyredops
 - /home/nat/git/Truxnell/home-cluster
 - /home/nat/git/Truxnell/qbittools
 - /home/nat/git/Truxnell/vyos-config
-- /home/nat/.local/share/chezmoi
 - /home/nat/git/k8s-gitops-repos/k8s-gitops-onedr0p
 - /home/nat/git/Truxnell/renovate-config
 - /home/nat/git/Truxnell/dotfiles
@@ -28,14 +28,14 @@ recentrepos:
 - /home/nat/git/Truxnell/pyamd
 startuppopupversion: 5
 customcommandshistory:
-- ""
-- pull
-- q
-- fix nfs
-- '!fixup'
-- qa
-- pod
-- 'fix: remove wg'
 - wq
+- 'fix: remove wg'
+- pod
+- qa
+- '!fixup'
+- fix nfs
+- q
+- pull
+- ""
 hidecommandlog: false
 ignorewhitespaceindiffview: false
