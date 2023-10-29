@@ -51,3 +51,4 @@ nodejs
 lazygit
 go-task
 sshpass
+gettext
