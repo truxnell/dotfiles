@@ -20,54 +20,83 @@ return {
     end,
   },
   { "barreiroleo/ltex-extra.nvim" },
+
+  -- lsp servers
   -- lsp servers
   {
     "neovim/nvim-lspconfig",
-    init = function()
-      -- disable lsp watcher. Too slow on linux
-      local ok, wf = pcall(require, "vim.lsp._watchfiles")
-      if ok then
-        wf._watchfunc = function()
-          return function() end
-        end
-      end
-    end,
     opts = {
+      inlay_hints = { enabled = true },
+      capabilities = {
+        workspace = {
+          didChangeWatchedFiles = {
+            dynamicRegistration = false,
+          },
+        },
+      },
       ---@type lspconfig.options
       servers = {
-        ltex = {
-          filetypes = { "text", "markdown" },
-          on_attach = function(client, bufnr)
-            print("Loading ltex from ltex_extra")
-            require("ltex_extra").setup({
-              init_check = true,
-              load_langs = { "en-AU" }, -- table <string> : language for witch dictionaries will be loaded
-              log_level = "error", -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
-              path = vim.fn.expand("~") .. "/.config/nvim/spell/",
-            })
+        ansiblels = {},
+        bashls = {},
+        clangd = {},
+        -- denols = {},
+        cssls = {},
+        dockerls = {},
+        -- ruff_lsp = {},
+        tailwindcss = {
+          root_dir = function(...)
+            return require("lspconfig.util").root_pattern(".git")(...)
           end,
+        },
+        tsserver = {
+          -- root_dir = function(...)
+          --   return require("lspconfig.util").root_pattern(".git")(...)
+          -- end,
+          single_file_support = false,
           settings = {
-            ltex = {
-              completionEnabled = true,
-              statusBarItem = true,
-              languageToolHttpServerUri = "https://language-tools.trux.dev/",
-              checkFrequency = "save",
-              language = "en-AU",
-              additionalRules = {
-                enablePickyRules = true,
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "literal",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = false,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
               },
             },
           },
         },
-        ansiblels = {},
-        bashls = {},
-        dockerls = {},
+        -- svelte = {},
         html = {},
-        gopls = {},
+        -- gopls = {},
         marksman = {},
-        pyright = {
-          enabled = false,
-        },
+        -- pyright = {
+        --   enabled = false,
+        -- },
+        -- rust_analyzer = {
+        -- settings = {
+        --   ["rust-analyzer"] = {
+        --     procMacro = { enable = true },
+        --     cargo = { allFeatures = true },
+        --     checkOnSave = {
+        --       command = "clippy",
+        --       extraArgs = { "--no-deps" },
+        --     },
+        --   },
+        -- },
+        -- },
         yamlls = {
           settings = {
             yaml = {
@@ -77,6 +106,7 @@ return {
         },
         lua_ls = {
           -- enabled = false,
+          -- cmd = { "/home/folke/projects/lua-language-server/bin/lua-language-server" },
           single_file_support = true,
           settings = {
             Lua = {
@@ -92,6 +122,7 @@ return {
                   -- "--log-level=trace",
                 },
               },
+              hover = { expandAlias = false },
               hint = {
                 enable = true,
                 setType = false,
@@ -130,7 +161,7 @@ return {
                 unusedLocalExclude = { "_*" },
               },
               format = {
-                enable = false,
+                enable = true,
                 defaultConfig = {
                   indent_style = "space",
                   indent_size = "2",
@@ -146,88 +177,56 @@ return {
     },
   },
 
-  -- null-ls
-  "jose-elias-alvarez/null-ls.nvim",
-  opts = function(_, opts)
-    local nls = require("null-ls")
-    vim.list_extend(opts.sources, {
-      nls.builtins.formatting.dprint,
-      nls.builtins.formatting.prettier.with({ filetypes = { "markdown" } }),
-      nls.builtins.diagnostics.markdownlint,
-      nls.builtins.diagnostics.deno_lint,
-      nls.builtins.formatting.isort,
-      nls.builtins.formatting.black,
-      nls.builtins.diagnostics.flake8,
-      nls.builtins.diagnostics.luacheck.with({
-        condition = function(utils)
-          return utils.root_has_file({ ".luacheckrc" })
-        end,
-      }),
-    })
-  end,
-
   {
     "neovim/nvim-lspconfig",
     opts = {
-      diagnostics = { virtual_text = false },
-      setup = {
-        clangd = function(_, opts)
-          opts.capabilities.offsetEncoding = { "utf-16" }
-        end,
-      },
+      diagnostics = { virtual_text = { prefix = "icons" } },
     },
   },
 
-  -- inlay hints
   {
-    "lvimuser/lsp-inlayhints.nvim",
-    branch = "anticonceal",
-    event = "LspAttach",
-    opts = {},
-    config = function(_, opts)
-      require("lsp-inlayhints").setup(opts)
-      vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("LspAttach_inlayhints", {}),
-        callback = function(args)
-          if not (args.data and args.data.client_id) then
-            return
-          end
-          ---@type lsp.Client
-          local client = vim.lsp.get_client_by_id(args.data.client_id)
-          require("lsp-inlayhints").on_attach(client, args.buf, false)
-        end,
-      })
-    end,
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = {
+      formatters_by_ft = {
+        ["markdown"] = { { "prettierd", "prettier" } },
+        ["markdown.mdx"] = { { "prettierd", "prettier" } },
+        ["javascript"] = { "dprint" },
+        ["javascriptreact"] = { "dprint" },
+        ["typescript"] = { "dprint" },
+        ["typescriptreact"] = { "dprint" },
+      },
+      formatters = {
+        shfmt = {
+          prepend_args = { "-i", "2", "-ci" },
+        },
+        dprint = {
+          condition = function(ctx)
+            return vim.fs.find({ "dprint.json" }, { path = ctx.filename, upward = true })[1]
+          end,
+        },
+      },
+    },
   },
-
-  -- {
-  -- "barreiroleo/ltex_extra.nvim",
-  -- dev = false,
-  -- ft = { "markdown", "tex" },
-  -- opts = {
-  --   init_check = true,
-  --   load_langs = { "en-AU" }, -- table <string> : language for witch dictionaries will be loaded
-  --   log_level = "trace", -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
-  --   path = vim.fn.expand("~") .. "/.config/nvim/spell/",
-  --   server_opts = {
-  --     on_attach = function(client, bufnr)
-  --       print("Loading ltex from ltex_extra")
-  --       require("ltex_extra").on_attach(client, bufnr)
-  --     end,
-  --     filetypes = { "bib", "markdown", "org", "plaintex", "rst", "rnoweb", "tex" },
-  --     settings = {
-  --       ltex = {
-  --         completionEnabled = true,
-  --         statusBarItem = true,
-  --         languageToolHttpServerUri = "https://language-tools.trux.dev/",
-  --         checkFrequency = "save",
-  --         language = "en-AU",
-  --         additionalRules = {
-  --           enablePickyRules = true,
-  --         },
-  --       },
-  --     },
-  --   },
-  -- },
-  -- },
+  {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters_by_ft = {
+        lua = { "selene", "luacheck" },
+        markdown = { "markdownlint" },
+      },
+      linters = {
+        selene = {
+          condition = function(ctx)
+            return vim.fs.find({ "selene.toml" }, { path = ctx.filename, upward = true })[1]
+          end,
+        },
+        luacheck = {
+          condition = function(ctx)
+            return vim.fs.find({ ".luacheckrc" }, { path = ctx.filename, upward = true })[1]
+          end,
+        },
+      },
+    },
+  },
 }
