@@ -52,3 +52,4 @@ lazygit
 go-task
 sshpass
 gettext
+hub
