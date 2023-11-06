@@ -38,3 +38,4 @@ packages:
   - name: gohugoio/hugo/hugo-extended@v0.120.3
   - name: denoland/deno@v1.38.0
   - name: cloudflare/cloudflared@2023.10.0
+  - name: ellie/atuin@v17.0.1
