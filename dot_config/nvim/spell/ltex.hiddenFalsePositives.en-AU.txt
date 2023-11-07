@@ -1,2 +1,0 @@
-{"rule":"PUNCTUATION_PARAGRAPH_END","sentence":"^\\QSpecs for CRD's etc can be found https://docs.victoriametrics.com/operator/api.html\\E$"}
-{"rule":"EN_COMPOUNDS","sentence":"^\\QStateless A fast time-scale database.\\E$"}
