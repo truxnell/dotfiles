@@ -19,7 +19,7 @@ packages:
   - name: helm/helm@v3.14.2
   - name: siderolabs/talos@v1.6.5
   - name: derailed/k9s@v0.31.7
-  - name: derailed/popeye@v0.20.3
+  - name: derailed/popeye@v0.20.4
   - name: kubernetes-sigs/cluster-api@v1.6.2
   - name: zellij-org/zellij@v0.39.2
   - name: mikefarah/yq@v4.42.1
