@@ -28,7 +28,7 @@ packages:
   - name: sbstp/kubie@v0.23.0
   - name: yannh/kubeconform@v0.6.4
   - name: cue-lang/cue@v0.8.1
-  - name: kopia/kopia@v0.16.1
+  - name: kopia/kopia@v0.17.0
   - name: gruntwork-io/terragrunt@v0.57.1
   - name: topgrade-rs/topgrade@v14.0.1
   - name: bitwarden/clients@cli-v2023.4.0
