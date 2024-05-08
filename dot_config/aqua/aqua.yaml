@@ -5,7 +5,7 @@ packages:
   - name: twpayne/chezmoi@v2.48.0
   - name: starship/starship@v1.18.2
   - name: BurntSushi/ripgrep@14.1.0
-  - name: sharkdp/fd@v10.0.0
+  - name: sharkdp/fd@v10.1.0
   - name: sharkdp/bat@v0.24.0
   - name: blacknon/hwatch@0.3.13
   - name: FiloSottile/age@v1.1.1
