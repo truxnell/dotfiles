@@ -15,7 +15,7 @@ packages:
   - name: direnv/direnv@v2.34.0
   - name: kubernetes/kubectl@v1.30.2
   - name: fluxcd/flux2@v2.3.0
-  - name: mozilla/sops@v3.8.1
+  - name: mozilla/sops@v3.9.0
   - name: helm/helm@v3.15.2
   - name: siderolabs/talos@v1.7.5
   - name: derailed/k9s@v0.31.7
