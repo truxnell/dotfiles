@@ -32,7 +32,7 @@ packages:
   - name: gruntwork-io/terragrunt@v0.66.9
   - name: topgrade-rs/topgrade@v15.0.0
   - name: bitwarden/clients@cli-v2023.4.0
-  - name: sachaos/viddy@v1.0.0
+  - name: sachaos/viddy@v1.0.1
   - name: sharkdp/vivid@v0.10.1
   - name: gohugoio/hugo/hugo-extended@v0.133.0
   - name: denoland/deno@v1.46.1
