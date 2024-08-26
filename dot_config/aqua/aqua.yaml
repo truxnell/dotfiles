@@ -34,7 +34,7 @@ packages:
   - name: bitwarden/clients@cli-v2023.4.0
   - name: sachaos/viddy@v1.0.2
   - name: sharkdp/vivid@v0.10.1
-  - name: gohugoio/hugo/hugo-extended@v0.133.0
+  - name: gohugoio/hugo/hugo-extended@v0.133.1
   - name: denoland/deno@v1.46.1
   - name: cloudflare/cloudflared@2024.8.3
   - name: atuinsh/atuin@v18.3.0
