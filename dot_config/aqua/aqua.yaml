@@ -29,7 +29,7 @@ packages:
   - name: yannh/kubeconform@v0.6.7
   - name: cue-lang/cue@v0.10.0
   - name: kopia/kopia@v0.17.0
-  - name: gruntwork-io/terragrunt@v0.68.1
+  - name: gruntwork-io/terragrunt@v0.68.2
   - name: topgrade-rs/topgrade@v16.0.1
   - name: bitwarden/clients@cli-v2023.4.0
   - name: sachaos/viddy@v1.2.0
