@@ -18,7 +18,7 @@ packages:
   - name: mozilla/sops@v3.9.1
   - name: helm/helm@v3.16.2
   - name: siderolabs/talos@v1.8.1
-  - name: derailed/k9s@v0.31.7
+  - name: derailed/k9s@v0.32.5
   - name: derailed/popeye@v0.21.5
   - name: kubernetes-sigs/cluster-api@v1.8.2
   - name: zellij-org/zellij@v0.40.1
