@@ -13,7 +13,7 @@ packages:
   - name: golang/go@1.23.4
   - name: go-task/task@v3.40.1
   - name: direnv/direnv@v2.35.0
-  - name: kubernetes/kubectl@v1.31.4
+  - name: kubernetes/kubectl@v1.32.0
   - name: fluxcd/flux2@v2.4.0
   - name: mozilla/sops@v3.9.2
   - name: helm/helm@v3.16.3
