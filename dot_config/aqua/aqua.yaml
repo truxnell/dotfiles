@@ -17,7 +17,7 @@ packages:
   - name: fluxcd/flux2@v2.4.0
   - name: mozilla/sops@v3.9.2
   - name: helm/helm@v3.16.4
-  - name: siderolabs/talos@v1.8.4
+  - name: siderolabs/talos@v1.9.0
   - name: derailed/k9s@v0.31.7
   - name: derailed/popeye@v0.21.5
   - name: kubernetes-sigs/cluster-api@v1.8.2
