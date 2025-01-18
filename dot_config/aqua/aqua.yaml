@@ -11,7 +11,7 @@ packages:
   - name: FiloSottile/age@v1.2.1
   - name: cli/cli@2.65.0
   - name: golang/go@1.23.5
-  - name: go-task/task@v3.40.1
+  - name: go-task/task@v3.41.0
   - name: direnv/direnv@v2.35.0
   - name: kubernetes/kubectl@v1.32.1
   - name: fluxcd/flux2@v2.4.0
