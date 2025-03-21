@@ -21,7 +21,7 @@ packages:
   - name: derailed/k9s@v0.31.7
   - name: derailed/popeye@v0.22.1
   - name: kubernetes-sigs/cluster-api@v1.8.2
-  - name: zellij-org/zellij@v0.42.0
+  - name: zellij-org/zellij@v0.42.1
   - name: mikefarah/yq@v4.45.1
   - name: github/hub@v2.14.2
   - name: jesseduffield/lazygit@v0.48.0
