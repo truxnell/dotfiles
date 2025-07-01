@@ -25,7 +25,7 @@ packages:
   - name: mikefarah/yq@v4.45.4
   - name: github/hub@v2.14.2
   - name: jesseduffield/lazygit@v0.52.0
-  - name: sbstp/kubie@v0.25.2
+  - name: sbstp/kubie@v0.26.0
   - name: yannh/kubeconform@v0.7.0
   - name: cue-lang/cue@v0.13.2
   - name: kopia/kopia@v0.20.1
