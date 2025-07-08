@@ -10,7 +10,7 @@ packages:
   - name: blacknon/hwatch@0.3.19
   - name: FiloSottile/age@v1.2.1
   - name: cli/cli@2.74.2
-  - name: golang/go@1.24.4
+  - name: golang/go@1.24.5
   - name: go-task/task@v3.44.0
   - name: direnv/direnv@v2.37.0
   - name: kubernetes/kubectl@v1.33.2
