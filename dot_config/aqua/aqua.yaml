@@ -24,7 +24,7 @@ packages:
   - name: zellij-org/zellij@v0.43.1
   - name: mikefarah/yq@v4.47.1
   - name: github/hub@v2.14.2
-  - name: jesseduffield/lazygit@v0.54.1
+  - name: jesseduffield/lazygit@v0.54.2
   - name: sbstp/kubie@v0.26.0
   - name: yannh/kubeconform@v0.7.0
   - name: cue-lang/cue@v0.14.1
