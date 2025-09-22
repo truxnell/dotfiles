@@ -36,5 +36,5 @@ packages:
   - name: sharkdp/vivid@v0.10.1
   - name: gohugoio/hugo/hugo-extended@v0.150.0
   - name: denoland/deno@v2.5.1
-  - name: cloudflare/cloudflared@2025.9.0
+  - name: cloudflare/cloudflared@2025.9.1
   - name: atuinsh/atuin@v18.8.0
