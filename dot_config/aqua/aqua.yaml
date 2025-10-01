@@ -9,7 +9,7 @@ packages:
   - name: sharkdp/bat@v0.25.0
   - name: blacknon/hwatch@0.3.19
   - name: FiloSottile/age@v1.2.1
-  - name: cli/cli@2.80.0
+  - name: cli/cli@2.81.0
   - name: golang/go@1.25.1
   - name: go-task/task@v3.45.4
   - name: direnv/direnv@v2.37.1
