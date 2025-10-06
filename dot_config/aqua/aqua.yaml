@@ -14,7 +14,7 @@ packages:
   - name: go-task/task@v3.45.4
   - name: direnv/direnv@v2.37.1
   - name: kubernetes/kubectl@v1.34.1
-  - name: fluxcd/flux2@v2.7.0
+  - name: fluxcd/flux2@v2.7.1
   - name: mozilla/sops@v3.11.0
   - name: helm/helm@v3.19.0
   - name: siderolabs/talos@v1.11.2
