@@ -31,7 +31,7 @@ packages:
   - name: kopia/kopia@v0.22.3
   - name: gruntwork-io/terragrunt@v0.99.1
   - name: topgrade-rs/topgrade@v16.9.0
-  - name: bitwarden/clients@cli-v2025.12.1
+  - name: bitwarden/clients@cli-v2026.1.0
   - name: sachaos/viddy@v1.3.0
   - name: sharkdp/vivid@v0.10.1
   - name: gohugoio/hugo/hugo-extended@v0.155.2
