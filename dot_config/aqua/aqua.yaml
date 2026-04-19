@@ -7,7 +7,7 @@ packages:
   - name: BurntSushi/ripgrep@15.1.0
   - name: sharkdp/fd@v10.4.2
   - name: sharkdp/bat@v0.26.1
-  - name: blacknon/hwatch@0.3.20
+  - name: blacknon/hwatch@0.4.0
   - name: FiloSottile/age@v1.3.1
   - name: cli/cli@2.90.0
   - name: golang/go@1.26.2
