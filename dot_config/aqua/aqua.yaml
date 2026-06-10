@@ -30,7 +30,7 @@ packages:
   - name: cue-lang/cue@v0.16.1
   - name: kopia/kopia@v0.23.0
   - name: gruntwork-io/terragrunt@v1.0.8
-  - name: topgrade-rs/topgrade@v17.5.1
+  - name: topgrade-rs/topgrade@v17.6.1
   - name: bitwarden/clients@cli-v2026.5.0
   - name: sachaos/viddy@v1.3.0
   - name: sharkdp/vivid@v0.11.1
