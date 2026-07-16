@@ -27,7 +27,7 @@ packages:
   - name: jesseduffield/lazygit@v0.63.1
   - name: sbstp/kubie@v0.28.0
   - name: yannh/kubeconform@v0.8.0
-  - name: cue-lang/cue@v0.17.0
+  - name: cue-lang/cue@v0.17.1
   - name: kopia/kopia@v0.23.1
   - name: gruntwork-io/terragrunt@v1.1.1
   - name: topgrade-rs/topgrade@v17.8.0
