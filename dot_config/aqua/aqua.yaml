@@ -37,4 +37,4 @@ packages:
   - name: gohugoio/hugo/hugo-extended@v0.165.0
   - name: denoland/deno@v2.9.6
   - name: cloudflare/cloudflared@2026.8.3
-  - name: atuinsh/atuin@v18.20.1
+  - name: atuinsh/atuin@v18.21.0
