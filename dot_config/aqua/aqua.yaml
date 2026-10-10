@@ -12,7 +12,7 @@ packages:
   - name: cli/cli@2.102.0
   - name: golang/go@1.27.2
   - name: go-task/task@v3.54.0
-  - name: direnv/direnv@v2.38.1
+  - name: direnv/direnv@v2.38.2
   - name: kubernetes/kubectl@v1.37.1
   - name: fluxcd/flux2@v2.9.6
   - name: mozilla/sops@v3.13.3
