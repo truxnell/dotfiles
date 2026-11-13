@@ -16,7 +16,7 @@ packages:
   - name: kubernetes/kubectl@v1.37.2
   - name: fluxcd/flux2@v2.10.0
   - name: mozilla/sops@v3.13.3
-  - name: helm/helm@v4.3.1
+  - name: helm/helm@v4.3.2
   - name: siderolabs/talos@v1.14.6
   - name: derailed/k9s@v0.31.7
   - name: derailed/popeye@v0.22.1
