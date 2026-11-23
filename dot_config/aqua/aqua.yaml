@@ -4,7 +4,7 @@ registries:
 packages:
   - name: twpayne/chezmoi@v2.74.2
   - name: starship/starship@v1.27.0
-  - name: BurntSushi/ripgrep@15.2.0
+  - name: BurntSushi/ripgrep@16.0.0
   - name: sharkdp/fd@v10.5.2
   - name: sharkdp/bat@v0.26.1
   - name: blacknon/hwatch@0.4.2
